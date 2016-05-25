@@ -1,0 +1,33 @@
+header {
+  text-align: center;
+  width: 1px;
+}
+
+footer {
+  text-align: center
+}
+
+h1 {
+  font-size: 15px;
+}
+
+aside {
+  display: block;
+}
+
+.logo {
+  width:200px;
+}
+
+.publicidad {
+  width:250px;
+  padding-bottom: 20px;
+}
+
+.jumbotron h1, .jumbotron .h1 {
+    font-size: 40px;
+}
+
+.col-center {
+   padding-top: 45px;
+ }

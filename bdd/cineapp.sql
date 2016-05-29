@@ -1,6 +1,6 @@
 /*==============================================================*/
 /* DBMS name:      MySQL 5.0                                    */
-/* Created on:     24/05/2016 22:57:07                          */
+/* Created on:     29/05/2016 16:59:44                          */
 /*==============================================================*/
 
 
@@ -59,7 +59,7 @@ create table PELICULA
    IDPRODUCTORA         int,
    IDGENERO             int,
    IDDIRECTOR           int,
-   CORREOUSR            varchar(50),
+   CORREOUSR            varchar(100),
    NOMBREPELICULA       varchar(150) not null,
    SINOPSISPELICULA     varchar(300) not null,
    FOTOPELICULA         varchar(100),
@@ -84,7 +84,7 @@ create table PRODUCTORA
 create table USUARIO
 (
    NOMBREUSR            varchar(50) not null,
-   CORREOUSR            varchar(50) not null,
+   CORREOUSR            varchar(100) not null,
    CLAVEUSR             varchar(16) not null,
    ESTADOUSR            tinyint,
    ISADMIN              tinyint,

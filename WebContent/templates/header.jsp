@@ -52,7 +52,7 @@
 							<span class="sr-only">(current)</span>
 					</a></li>
 					<li><a
-						href="${pageContext.request.contextPath}/vistas/genero/home.jsp">G&eacute;nero
+						href="${pageContext.request.contextPath}/vistas/genero/HomeGenero.jsp">G&eacute;nero
 					</a></li>
 					<li><a
 						href="${pageContext.request.contextPath}/vistas/actor/home.jsp">Actor
@@ -61,7 +61,7 @@
 						href="${pageContext.request.contextPath}/vistas/director/home.jsp">Director
 					</a></li>
 					<li><a
-						href="${pageContext.request.contextPath}/vistas/productora/home.jsp">Productora
+						href="${pageContext.request.contextPath}/vistas/productora/HomeProductora.jsp">Productora
 					</a></li>
 				</ul>
 				<ul class="nav navbar-nav navbar-right">

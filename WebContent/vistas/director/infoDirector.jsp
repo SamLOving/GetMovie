@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+    
 <jsp:include page="/templates/header.jsp"></jsp:include>
 <section class="container">
 	<ul class="breadcrumb">
@@ -48,7 +49,7 @@
 					<div class="form-group">
 						<label for="imagenDirector" class="col-lg-2 control-label">Foto</label>
 						<div class="col-lg-10">
-							<img src="${pageContext.request.contextPath}/images/director/1/singer.jpg" 
+							<img src="${pageContext.request.contextPath}/images/director/1/Bsinger.jpg" 
 							class="img-responsive" alt="Responsive image">
 						</div>
 					</div>

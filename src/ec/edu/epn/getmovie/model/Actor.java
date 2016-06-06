@@ -2,6 +2,7 @@ package ec.edu.epn.getmovie.model;
 
 import java.io.Serializable;
 import javax.persistence.*;
+
 import java.util.List;
 
 
@@ -10,6 +11,7 @@ import java.util.List;
  * 
  */
 @Entity
+@Table(name = "ACTOR")
 @NamedQuery(name="Actor.findAll", query="SELECT a FROM Actor a")
 public class Actor implements Serializable {
 	private static final long serialVersionUID = 1L;

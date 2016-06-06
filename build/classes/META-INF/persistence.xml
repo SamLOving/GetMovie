@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="2.1" xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
+	<persistence-unit name="GetMovieJPA" transaction-type="RESOURCE_LOCAL">
+		<class>ec.edu.epn.getmovie.model.Actor</class>
+		<class>ec.edu.epn.getmovie.model.Director</class>
+		<class>ec.edu.epn.getmovie.model.Genero</class>
+		<class>ec.edu.epn.getmovie.model.Pelicula</class>
+		<class>ec.edu.epn.getmovie.model.Productora</class>
+		<class>ec.edu.epn.getmovie.model.Usuario</class>
+		<properties>
+			<property name="javax.persistence.jdbc.url" value="jdbc:mysql://192.168.216.131:3306/GetMovieDB"/>
+			<property name="javax.persistence.jdbc.user" value="bases"/>
+			<property name="javax.persistence.jdbc.password" value="bases"/>
+			<property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver"/>
+		</properties>
+	</persistence-unit>
+</persistence>

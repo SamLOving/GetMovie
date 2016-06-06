@@ -9,13 +9,13 @@ import java.util.List;
  * The persistent class for the USUARIO database table.
  * 
  */
-@Entity
-@NamedQuery(name="Usuario.findAll", query="SELECT u FROM Usuario u")
+@Entity 
+@Table(name = "USUARIO")
+@NamedQuery(name="Usuario.findById", query="SELECT u FROM Usuario u where u.correousr like :correo")
 public class Usuario implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
 	private String correousr;
 
 	private String claveusr;

@@ -5,7 +5,7 @@
 <section class="container">
 	<div class="row">
 		<div class="col-lg-9">
-			<form class="form-horizontal" id="loginForm">
+			<form class="form-horizontal" id="loginForm" method="post" action="singup">
 				<fieldset>
 					<legend>Registro de Usuario</legend>
 					<div class="form-group">
@@ -19,7 +19,7 @@
 					<div class="form-group">
 						<label for="inputEmail" class="col-lg-2 control-label">Email</label>
 						<div class="col-lg-10">
-							<input type="text" class="form-control" id="inputEmail"
+							<input type="text" class="form-control" id="inputEmail" name="email"
 								placeholder="Email" required
 								pattern="^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$"
 								title="El email ingresado debe tener el formato adecuado, p. ej: nombre@dominio.com"
@@ -38,10 +38,10 @@
 					<div class="form-group">
 						<label for="inputPassword" class="col-lg-2 control-label">Confirmar contraseña</label>
 						<div class="col-lg-10">
-							<input type="password" class="form-control" id="inputPassword"
-								name="password" placeholder="Confirmar contraseña" required pattern=".{8,16}"
+							<input type="password" class="form-control" id="inputConfirmPassword"
+								name="confirmPassword" placeholder="Confirmar contraseña" required pattern=".{8,16}"
 								title="La contraseña debe contener de 8 a 16 caracteres">
-						</div>
+						</div> 
 					</div>
 					<div>
 						<button type="submit" class="btn btn-primary"

@@ -1,5 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
+<%@ page import="java.util.*, ec.edu.epn.getmovie.model.*"%>
+<%
+Collection<Usuario> listaUsuario = (Collection<Usuario>) request.getAttribute("listaUsuario");
+%>
+
 <jsp:include page="/templates/header.jsp"></jsp:include>
 
 <section class="container">
@@ -7,13 +12,13 @@
 		<div class="col-lg-9">
 			<form class="form-horizontal" id="loginForm">
 				<fieldset>
-					<legend>Administración de Usuarios</legend>
+					<legend>Administraci&oacute;n de Usuarios</legend>
 					<div>
 						<div class="form-group">
 							<label for="inputName" class="col-lg-1 control-label">Email</label>
 							<div class="col-lg-11">
-								<input type="text" class="form-control" id="inputName"
-									name="username" placeholder="Email">
+								<input type="text" class="form-control" id="inputEmail"
+									name="email" placeholder="Email">
 							</div>
 						</div>
 						<div>
@@ -33,14 +38,19 @@
 									<th class="col-xs-1">Acci&oacute;n</th>
 								</tr>
 							</thead>
-
+							
+							<%
+							try {
+								for (Usuario u : listaUsuario) {
+							%>
+							
 							<tbody>
 								<tr>
-									<td>sam@dominio.com</td>
+									<td><%=u.getCorreousr()%></td>
 									<td>
 										<form method="get"
-											action="${pageContext.request.contextPath}/vistas/cuenta/modificar.jsp">
-											<button type="submit" class="btn btn-default" value=""
+											action="${pageContext.request.contextPath}/cuenta/modificar">
+											<button type="submit" class="btn btn-default" value="<%=u.getCorreousr()%>"
 												name="usuarioModificar">
 												<span class="material-icons md-16">&#xE150;</span>
 											</button>
@@ -48,50 +58,8 @@
 									</td>
 									<td>
 										<form method="post"
-											action="${pageContext.request.contextPath}/vistas/cuenta/home.jsp">
-											<button type="submit" class="btn btn-default" value=""
-												name="usuarioEliminar">
-												<i class="material-icons md-16">&#xE872;</i>
-											</button>
-										</form>
-									</td>
-								</tr>
-								<tr>
-									<td>andres@dominio.com</td>
-									<td>
-										<form method="get"
-											action="${pageContext.request.contextPath}/vistas/cuenta/modificar.jsp">
-											<button type="submit" class="btn btn-default" value=""
-												name="usuarioModificar">
-												<span class="material-icons md-16">&#xE150;</span>
-											</button>
-										</form>
-									</td>
-									<td>
-										<form method="post"
-											action="${pageContext.request.contextPath}/vistas/cuenta/home.jsp">
-											<button type="submit" class="btn btn-default" value=""
-												name="usuarioEliminar">
-												<i class="material-icons md-16">&#xE872;</i>
-											</button>
-										</form>
-									</td>
-								</tr>
-								<tr>
-									<td>stan@dominio.com</td>
-									<td>
-										<form method="get"
-											action="${pageContext.request.contextPath}/vistas/cuenta/modificar.jsp">
-											<button type="submit" class="btn btn-default" value=""
-												name="usuarioModificar">
-												<span class="material-icons md-16">&#xE150;</span>
-											</button>
-										</form>
-									</td>
-									<td>
-										<form method="post"
-											action="${pageContext.request.contextPath}/vistas/cuenta/home.jsp">
-											<button type="submit" class="btn btn-default" value=""
+											action="${pageContext.request.contextPath}/cuenta/eliminar">
+											<button type="submit" class="btn btn-default" value="<%=u.getCorreousr()%>"
 												name="usuarioEliminar">
 												<i class="material-icons md-16">&#xE872;</i>
 											</button>
@@ -99,6 +67,12 @@
 									</td>
 								</tr>
 							</tbody>
+							<%
+									}
+								} catch (Exception e){
+									System.out.println("Error al listar usuarios");
+								}
+							%>
 						</table>
 					</div>
 				</div>

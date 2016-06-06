@@ -2,6 +2,7 @@ package ec.edu.epn.getmovie.model;
 
 import java.io.Serializable;
 import javax.persistence.*;
+
 import java.math.BigDecimal;
 import java.util.Date;
 
@@ -11,6 +12,7 @@ import java.util.Date;
  * 
  */
 @Entity
+@Table(name = "PELICULA")
 @NamedQuery(name="Pelicula.findAll", query="SELECT p FROM Pelicula p")
 public class Pelicula implements Serializable {
 	private static final long serialVersionUID = 1L;

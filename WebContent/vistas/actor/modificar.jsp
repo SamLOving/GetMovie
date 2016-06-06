@@ -5,8 +5,8 @@
 <section class="container">
 	<ul class="breadcrumb">
 		<li><a href="${pageContext.request.contextPath}/vistas/home.jsp">Home</a>
-		<li><a href="${pageContext.request.contextPath}/vistas/genero/home.jsp">G&eacute;nero</a></li>
-  		<li class="active">Registrar</li>
+		<li><a href="${pageContext.request.contextPath}/vistas/actor/home.jsp">Actor</a></li>
+  		<li class="active">Modificar</li>
 	</ul>
 	<div class="row">
 		<div class="col-lg-9">

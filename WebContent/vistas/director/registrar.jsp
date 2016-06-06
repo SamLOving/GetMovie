@@ -17,13 +17,14 @@
 						<label for="nombre" class="col-lg-2 control-label">Nombre</label>
 						<div class="col-lg-10">
 							<input type="text" class="form-control" id="Nombre"
-								placeholder="Nombre">
+								placeholder="Nombre" name="nombre">
 						</div>
 					</div>
 					<div class="form-group">
 						<label for="fecha" class="col-lg-2 control-label">Fecha de nacimiento</label>
 						<div class="col-lg-10">
-							<input type="date" class="form-control" id="fecha" placeholder="dd-mm-yyyy" name="fecha"/>
+							<input type="date" class="form-control" id="fecha" placeholder="yyyy-mm-dd" 
+								name="fecha"/>
 						</div>
 					</div>
 					<div class="form-group">
@@ -31,28 +32,22 @@
       					<div class="col-lg-10">
         					<div class="radio">
           						<label>
-            					<input type="radio" name="optionsRadios" id="optionsRadios1" value="Masculino">
+            					<input type="radio" name="genero" id="generoM" value="Masculino">
             						Masculino
           						</label>
         						</div>
         					<div class="radio">
           						<label>
-            					<input type="radio" name="optionsRadios" id="optionsRadios2" value="Femenino">
+            					<input type="radio" name="genero" id="generoF" value="Femenino">
             						Femenino
           						</label>
         					</div>
       					</div>
     				</div>
 					<div class="form-group">
-						<label for="oscars" class="col-lg-2 control-label">N&uacute;mero de Oscars</label>
+						<label for="imagenActor" class="col-lg-2 control-label">Foto</label>
 						<div class="col-lg-10">
-							<input type="text" class="form-control" id="oscars" placeholder="Numero de oscars">
-						</div>
-					</div>
-					<div class="form-group">
-						<label for="imagenAutor" class="col-lg-2 control-label">Foto</label>
-						<div class="col-lg-10">
-							<input type="file" id="imagenAutor"/>
+							<input type="file" id="imagenDirector" name="fotoDirector"/>
 						</div>
 					</div>
 				</fieldset>

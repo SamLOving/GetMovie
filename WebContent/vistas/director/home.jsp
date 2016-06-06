@@ -4,6 +4,10 @@
 <jsp:include page="/templates/header.jsp"></jsp:include>
 
 <section class="container">
+	<ul class="breadcrumb">
+		<li><a href="${pageContext.request.contextPath}/vistas/home.jsp">Home</a>
+  		<li class="active">Director</li>
+	</ul>
 	<h1>Men&uacute; de administraci&oacute;n de directores</h1>
 	<div class="row">
 		<div class="col-lg-9">

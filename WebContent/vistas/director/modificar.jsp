@@ -44,12 +44,6 @@
       					</div>
     				</div>
 					<div class="form-group">
-						<label for="oscars" class="col-lg-2 control-label">N&uacute;mero de Oscars</label>
-						<div class="col-lg-10">
-							<input type="text" class="form-control" id="oscars" placeholder="Numero de oscars">
-						</div>
-					</div>
-					<div class="form-group">
 						<label for="imagenDirector" class="col-lg-2 control-label">Foto</label>
 						<div class="col-lg-10">
 							<input type="file" id="imagenDirector"/>

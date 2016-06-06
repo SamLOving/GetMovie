@@ -3,6 +3,11 @@
     
 <jsp:include page="/templates/header.jsp"></jsp:include>
 <section class="container">
+<ul class="breadcrumb">
+		<li><a href="${pageContext.request.contextPath}/vistas/home.jsp">Home</a>
+		<li><a href="${pageContext.request.contextPath}/vistas/director/home.jsp">Director</a></li>
+  		<li class="active">Administrar</li>
+	</ul>
 	<div class="row">
 		<div class="col-lg-9">
 			<form class="form-horizontal" id="loginForm">
@@ -52,6 +57,15 @@
 											<button type="submit" class="btn btn-default" value=""
 												name="directorEliminar">
 												<i class="material-icons md-16">&#xE872;</i>
+											</button>
+										</form>
+									</td>
+									<td>
+										<form method="get"
+											action="${pageContext.request.contextPath}/vistas/director/info.jsp">
+											<button type="submit" class="btn btn-default" value=""
+												name="directorInfo">
+												<i class="material-icons">&#xE8F4;</i>
 											</button>
 										</form>
 									</td>

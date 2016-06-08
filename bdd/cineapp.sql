@@ -1,4 +1,4 @@
-/*==============================================================*/
+*==============================================================*/
 /* DBMS name:      MySQL 5.0                                    */
 /* Created on:     29/05/2016 16:59:44                          */
 /*==============================================================*/
@@ -21,9 +21,12 @@ drop table if exists USUARIO;
 /*==============================================================*/
 create table ACTOR
 (
-   IDACTOR              int not null,
+   IDACTOR              int not null AUTO_INCREMENT,
    NOMBREACTOR          varchar(50) not null,
    FOTOACTOR            varchar(100),
+   NACIMIENTO		date,
+   GENERO		varchar(15),
+   OSCARS		int,
    primary key (IDACTOR)
 );
 
@@ -32,9 +35,11 @@ create table ACTOR
 /*==============================================================*/
 create table DIRECTOR
 (
-   IDDIRECTOR           int not null,
+   IDDIRECTOR           int not null AUTO_INCREMENT,
    NOMBREDIRECTOR       varchar(50),
    FOTODIRECTOR         varchar(100),
+   NACIMIENTO			date,
+   GENERO				varchar(15),
    primary key (IDDIRECTOR)
 );
 
@@ -43,7 +48,7 @@ create table DIRECTOR
 /*==============================================================*/
 create table GENERO
 (
-   IDGENERO             int not null,
+   IDGENERO             int not null AUTO_INCREMENT,
    NOMBREGENERO         varchar(50) not null,
    DESCRIPCIONGENERO    varchar(150) not null,
    primary key (IDGENERO)
@@ -54,7 +59,7 @@ create table GENERO
 /*==============================================================*/
 create table PELICULA
 (
-   IDPELICULA           int not null,
+   IDPELICULA           int not null AUTO_INCREMENT,
    IDACTOR              int,
    IDPRODUCTORA         int,
    IDGENERO             int,
@@ -73,7 +78,7 @@ create table PELICULA
 /*==============================================================*/
 create table PRODUCTORA
 (
-   IDPRODUCTORA         int not null,
+   IDPRODUCTORA         int not null AUTO_INCREMENT,
    NOMBREPRODUCTORA     varchar(50) not null,
    primary key (IDPRODUCTORA)
 );
@@ -105,4 +110,3 @@ alter table PELICULA add constraint FK_RELATIONSHIP_4 foreign key (CORREOUSR)
 
 alter table PELICULA add constraint FK_RELATIONSHIP_5 foreign key (IDPRODUCTORA)
       references PRODUCTORA (IDPRODUCTORA) on delete restrict on update restrict;
-

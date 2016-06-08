@@ -27,6 +27,8 @@ public class RegistrarProductora extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		getServletConfig().getServletContext().getRequestDispatcher("/vistas/productora/RegistrarProductora.jsp").forward(request, response);
+		doPost(request, response);
 	}
 
 	/**
@@ -34,6 +36,9 @@ public class RegistrarProductora extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		
+		
+		
 	}
 
 }

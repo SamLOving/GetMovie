@@ -80,6 +80,7 @@ create table PRODUCTORA
 (
    IDPRODUCTORA         int not null AUTO_INCREMENT,
    NOMBREPRODUCTORA     varchar(50) not null,
+   PAISPRODUCTORA       varchar(50) not null,
    primary key (IDPRODUCTORA)
 );
 

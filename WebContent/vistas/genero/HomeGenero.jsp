@@ -6,9 +6,9 @@
 	<h1>Men&uacute; de administraci&oacute;n de G&eacute;neros</h1>
 	<div class="row">
 		<div class="col-lg-9">
-			<a href="${pageContext.request.contextPath}/vistas/genero/RegistrarGenero.jsp" 
+			<a href="${pageContext.request.contextPath}/genero/registrar" 
 				class="btn btn-default btn-lg btn-block">Registrar</a>
-			<a href="${pageContext.request.contextPath}/vistas/genero/AdministrarGenero.jsp" 
+			<a href="${pageContext.request.contextPath}/genero/administrar" 
 				class="btn btn-default btn-lg btn-block">Administrar</a>
 		</div>
 		<div>

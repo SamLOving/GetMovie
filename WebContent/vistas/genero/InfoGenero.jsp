@@ -9,7 +9,7 @@
 	</ul>
 	<div class="row">
 		<div class="col-lg-9">
-			<form class="form-horizontal">
+			<form class="form-horizontal" method="get">
 				<fieldset>
 					<legend>Informaci&oacute;n de G&eacute;nero</legend>
 					<div class="form-group">
@@ -28,11 +28,12 @@
     </div>
 					
 				</fieldset>
-			</form>
-			<div>
+				<div>
 				<button type="submit" class="btn btn-primary" data-container="body"
 					data-toggle="popover" data-placement="top">Volver</button>
 			</div>
+			</form>
+			
 		</div>
 		<div>
 			<div class="col-lg-3">

@@ -9,30 +9,32 @@
 	</ul>
 	<div class="row">
 		<div class="col-lg-9">
-			<form class="form-horizontal">
+			<form class="form-horizontal" method="post">
 				<fieldset>
 					<legend>Registro de G&eacute;nero</legend>
 					<div class="form-group">
 						<label for="nombre" class="col-lg-2 control-label">Nombre</label>
 						<div class="col-lg-10">
 							<input type="text" class="form-control" id="Nombre"
-								placeholder="Nombre">
+								placeholder="Nombre" name="nombreGenero">
 						</div>
 					</div>
 					<div class="form-group">
       <label for="textArea" class="col-lg-2 control-label">Descripci&oacute;n</label>
       <div class="col-lg-10">
-        <textarea class="form-control" rows="3" id="textArea"></textarea>
+        <textarea class="form-control" rows="3" id="textArea" name="descripcionGenero"></textarea>
         
       </div>
     </div>
-					
-				</fieldset>
-			</form>
-			<div>
+    <div>
 				<button type="submit" class="btn btn-primary" data-container="body"
 					data-toggle="popover" data-placement="top">Registrar</button>
-			</div>
+			</div>	
+				</fieldset>
+				
+				
+			</form>
+			
 		</div>
 		<div>
 			<div class="col-lg-3">

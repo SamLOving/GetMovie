@@ -4,7 +4,7 @@
 <section class="container">
 	<div class="row">
 		<div class="col-lg-9">
-			<form class="form-horizontal" id="loginForm">
+			<form class="form-horizontal" id="loginForm" method="get">
 				<fieldset>
 					<legend>Administración de G&eacute;neros</legend>
 					<div>

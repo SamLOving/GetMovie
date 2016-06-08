@@ -28,11 +28,12 @@
     </div>
 					
 				</fieldset>
-			</form>
-			<div>
+				<div>
 				<button type="submit" class="btn btn-primary" data-container="body"
 					data-toggle="popover" data-placement="top">Modificar</button>
 			</div>
+			</form>
+			
 		</div>
 		<div>
 			<div class="col-lg-3">

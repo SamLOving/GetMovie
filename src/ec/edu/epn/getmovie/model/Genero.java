@@ -11,14 +11,15 @@ import java.util.List;
  */
 @Entity
 @Table(name = "GENERO")
-@NamedQuery(name="Genero.findAll", query="SELECT g FROM Genero g")
+@NamedQuery(name="Genero.findById", query="SELECT g FROM Genero g WHERE g.idgenero LIKE ?")
 public class Genero implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private int idgenero;
-
+	//@Column(name="IDGENERO") 
+	private int idgenero;	
+	
 	private String descripciongenero;
 
 	private String nombregenero;

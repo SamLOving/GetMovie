@@ -47,9 +47,11 @@ public class RegistrarGenero extends HttpServlet {
 		String nombreGenero = request.getParameter("nombreGenero");
 		String descripcionGenero = request.getParameter("descripcionGenero");
 		//System.out.println("PRUEBA SYSO"+nombreGenero +" " +descripcionGenero);
+		
+		// para que no tenga error el servlet con valor null
 		if (nombreGenero == null || descripcionGenero==null){
 			// redireccionar a una vista 
-			getServletConfig().getServletContext().getRequestDispatcher("/home/genero").forward(request, response); 
+			getServletConfig().getServletContext().getRequestDispatcher("/genero/home").forward(request, response); 
 					
 		} else {
 			// colocar la informacion obtenida de las vistas en el objeto 

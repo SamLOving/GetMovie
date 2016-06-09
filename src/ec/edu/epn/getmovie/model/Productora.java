@@ -20,6 +20,7 @@ public class Productora implements Serializable {
 	private int idproductora;
 
 	private String nombreproductora;
+	private String paisproductora;
 
 	//bi-directional many-to-one association to Pelicula
 	@OneToMany(mappedBy="productora", fetch=FetchType.EAGER)
@@ -42,6 +43,14 @@ public class Productora implements Serializable {
 
 	public void setNombreproductora(String nombreproductora) {
 		this.nombreproductora = nombreproductora;
+	}
+	
+	public String getPaisproductora() {
+		return this.paisproductora;
+	}
+
+	public void setPaisproductora(String paisproductora) {
+		this.paisproductora = paisproductora;
 	}
 
 	public List<Pelicula> getPeliculas() {

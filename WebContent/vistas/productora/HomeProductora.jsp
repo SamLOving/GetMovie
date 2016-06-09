@@ -6,9 +6,9 @@
 	<h1>Men&uacute; de administraci&oacute;n de Productoras</h1>
 	<div class="row">
 		<div class="col-lg-9">
-			<a href="${pageContext.request.contextPath}/vistas/productora/RegistrarProductora.jsp" 
+			<a href="${pageContext.request.contextPath}/productora/registrar" 
 				class="btn btn-default btn-lg btn-block">Registrar</a>
-			<a href="${pageContext.request.contextPath}/vistas/productora/AdministrarProductora.jsp" 
+			<a href="${pageContext.request.contextPath}/productora/administrar" 
 				class="btn btn-default btn-lg btn-block">Administrar</a>
 		</div>
 		<div>

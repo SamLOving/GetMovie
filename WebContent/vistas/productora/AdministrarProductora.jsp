@@ -1,18 +1,25 @@
+<%@page import="ec.edu.epn.getmovie.model.Productora"%>
+<%@page import="java.util.Collection"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+	pageEncoding="ISO-8859-1"%>
+<%
+	Collection<Productora> listaProductoras = (Collection<Productora>) request
+			.getAttribute("listaProductorasParaLaVista");
+%>
 <jsp:include page="/templates/header.jsp"></jsp:include>
 <section class="container">
 	<div class="row">
 		<div class="col-lg-9">
-			<form class="form-horizontal" id="loginForm">
+			<form class="form-horizontal" id="loginForm" method="get">
 				<fieldset>
-					<legend>Administración de Productora</legend>
+					<legend>Administraci&oacute;n de Productora</legend>
 					<div>
 						<div class="form-group">
 							<label for="nombre" class="col-lg-1 control-label">Nombre</label>
 							<div class="col-lg-11">
 								<input type="text" class="form-control" id="nombreProductora"
-									name="nombreProductora" placeholder="Nombre de la Productora">
+									name="nombreProductoraDesdeVistaParaBuscar"
+									placeholder="Nombre de la Productora">
 							</div>
 						</div>
 						<div>
@@ -32,30 +39,53 @@
 									<th class="col-xs-1">Acci&oacute;n</th>
 								</tr>
 							</thead>
-
+							<%
+								try {
+									for (Productora p : listaProductoras) {
+							%>
 							<tbody>
 								<tr>
-									<td>Romance</td>
+									<td><%=p.getNombreproductora()%></td>
 									<td>
 										<form method="get"
-											action="${pageContext.request.contextPath}/vistas/productora/ModificarProductora.jsp">
-											<button type="submit" class="btn btn-default" value=""
-												name="productoraModificar">
+											action="${pageContext.request.contextPath}/productora/modificar">
+											<button type="submit" class="btn btn-default"
+												value="<%=p.getIdproductora()%>"
+												name="productoraModificarDesdeVista">
 												<span class="material-icons md-16">&#xE150;</span>
 											</button>
 										</form>
 									</td>
 									<td>
 										<form method="post"
-											action="${pageContext.request.contextPath}/vistas/productora/HomeProductora.jsp">
-											<button type="submit" class="btn btn-default" value=""
-												name="productoraEliminar">
+											action="${pageContext.request.contextPath}/productora/eliminar">
+											<button type="submit" class="btn btn-default"
+												value="<%=p.getIdproductora()%>"
+												name="productoraEliminarDesdeVista">
 												<i class="material-icons md-16">&#xE872;</i>
 											</button>
 										</form>
 									</td>
+									<td>
+									<form method="get"
+											action="${pageContext.request.contextPath}/productora/info">
+											<button type="submit" class="btn btn-default" value="<%=p.getIdproductora()%>"
+												name="productoraInfoDesdeVista">
+												<i class="material-icons">&#xE8F4;</i>
+											</button>
+										</form>
+									
+									</td>
+									
 								</tr>
 							</tbody>
+							<%
+								}
+								} catch (Exception e) {
+									System.out.println("Error al listar productora");
+								}
+							%>
+
 						</table>
 					</div>
 				</div>

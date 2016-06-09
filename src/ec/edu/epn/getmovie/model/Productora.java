@@ -11,7 +11,7 @@ import java.util.List;
  */
 @Entity
 @Table(name = "PRODUCTORA")
-@NamedQuery(name="Productora.findById", query="SELECT p FROM Productora p WHERE p.idproductora LIKE ?")
+@NamedQuery(name="Productora.findByNombre", query="SELECT p FROM Productora p WHERE p.nombreproductora LIKE :nombreProductoraABuscarQuery")
 public class Productora implements Serializable {
 	private static final long serialVersionUID = 1L;
 

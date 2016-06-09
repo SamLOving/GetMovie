@@ -42,24 +42,27 @@ public class ServiceGenero {
 		em.close();
 	}
 	
-	public void modificarGenero (int idgenero){
+	public void modificarGenero (Genero genero){
 		EntityManager em = emf.createEntityManager();
-		Genero genero = em.getReference(Genero.class, idgenero);
+		
 		
 		// permite iniciar la query
 		em.getTransaction().begin();
+		Genero generito = em.find(Genero.class, genero.getIdgenero());
 		//permite hacer la creacion del objeto, persist = insert
-		em.persist(genero);
+		
+		em.persist(generito);
 		// una query se asegura de que se realice, se hizo o no
 		em.getTransaction().commit();
 		// siempre se cierra el entitymanager
 		em.close();
+		
 	}
 	
 	public Genero buscarGenero (int idgenero){
 		EntityManager em = emf.createEntityManager();
 		em.getTransaction().begin();
-		Genero genero = em.getReference(Genero.class, idgenero);
+		Genero genero = em.find(Genero.class, idgenero);
 		
 		em.getTransaction().commit();
 		em.close();
@@ -67,10 +70,10 @@ public class ServiceGenero {
 	}
 	
 	@SuppressWarnings("unchecked")
-	public Collection<Genero> listarGenero (int idgenero){
+	public Collection<Genero> listarGenero (String nombregenero){
 		EntityManager em = emf.createEntityManager();
-		Query q = em.createNamedQuery("Genero.findById");
-		q.setParameter("idgenero", "%"+idgenero+"%");
+		Query q = em.createNamedQuery("Genero.findByNombre");
+		q.setParameter("nombreGeneroABuscarQuery", "%"+nombregenero+"%");
 		Collection<Genero> listagenero = q.getResultList();
 		em.close();
 		return listagenero;

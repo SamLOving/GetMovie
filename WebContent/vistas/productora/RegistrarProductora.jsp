@@ -26,7 +26,7 @@
 							de Productora</label>
 						<div class="col-lg-10">
 							<input type="text" class="form-control" id="Nombre"
-								placeholder="Nombre" name="paisProductora">
+								placeholder="Pa&iacute;s" name="paisProductora">
 						</div>
 					</div>
 					<div>

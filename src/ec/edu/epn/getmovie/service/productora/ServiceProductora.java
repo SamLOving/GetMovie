@@ -52,7 +52,7 @@ public class ServiceProductora {
 	public Productora buscarProductora (int idproductora){
 		EntityManager em = emf.createEntityManager();
 		em.getTransaction().begin();
-		Productora productora = em.getReference(Productora.class, idproductora);
+		Productora productora = em.find(Productora.class, idproductora);
 		
 		em.getTransaction().commit();
 		em.close();
@@ -60,10 +60,10 @@ public class ServiceProductora {
 	}
 	
 	@SuppressWarnings("unchecked")
-	public Collection<Productora> listarGenero (int idproductora){
+	public Collection<Productora> listarProductora (String nombreproductora){
 		EntityManager em = emf.createEntityManager();
-		Query q = em.createNamedQuery("Genero.findById");
-		q.setParameter("idproductora", "%"+idproductora+"%");
+		Query q = em.createNamedQuery("Productora.findByNombre");
+		q.setParameter("nombreProductoraABuscarQuery", "%"+nombreproductora+"%");
 		Collection<Productora> listaproductora = q.getResultList();
 		em.close();
 		return listaproductora;

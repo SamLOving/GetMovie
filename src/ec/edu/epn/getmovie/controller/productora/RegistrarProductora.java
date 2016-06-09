@@ -47,7 +47,7 @@ public class RegistrarProductora extends HttpServlet {
 		String paisProductora = request.getParameter("paisProductora");
 		
 		// prueba si funciona
-		System.out.println("############### PRUEBA"+nombreProductora + " "+ paisProductora);
+		//System.out.println("############### PRUEBA"+nombreProductora + " "+ paisProductora);
 		
 		
 		if(nombreProductora==null || paisProductora==null){

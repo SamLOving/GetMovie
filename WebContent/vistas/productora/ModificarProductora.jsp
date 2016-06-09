@@ -1,5 +1,9 @@
+<%@page import="ec.edu.epn.getmovie.model.Productora"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+    <%
+    Productora generoEnVista = (Productora)request.getAttribute("ProductoraModificadoParaLaVista");
+    %>
 <jsp:include page="/templates/header.jsp"></jsp:include>
 <section class="container">
 	<ul class="breadcrumb">

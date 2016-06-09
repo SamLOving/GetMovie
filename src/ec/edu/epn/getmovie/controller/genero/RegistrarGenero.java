@@ -68,7 +68,7 @@ public class RegistrarGenero extends HttpServlet {
 		
 		}
 			
-		this.doGet(request, response);
+		//this.doGet(request, response);
 		
 	}
 

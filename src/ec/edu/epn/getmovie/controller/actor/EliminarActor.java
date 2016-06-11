@@ -51,5 +51,4 @@ public class EliminarActor extends HttpServlet {
 				.forward(request, response);
 		}
 	}
-
 }

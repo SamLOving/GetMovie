@@ -33,8 +33,10 @@ public class ServiceActor {
 	}
 	public void eliminarActor(int idActor) {
 		EntityManager em = emf.createEntityManager();
-		Actor actor = em.getReference(Actor.class, idActor);
+		Actor actor = em.find(Actor.class, idActor);
+		em.getTransaction().begin();
 		em.remove(actor);
+		em.getTransaction().commit();
 		em.close();
 	}
 	public void modificarActor(Actor actorPost){
@@ -45,7 +47,6 @@ public class ServiceActor {
 		actorGet.setGenero(actorPost.getGenero());
 		actorGet.setOscars(actorPost.getOscars());
 		actorGet.setNacimiento(actorPost.getNacimiento());
-		actorGet.setFotoactor(actorPost.getFotoactor());
 		em.getTransaction().commit();
 		em.close();
 	}

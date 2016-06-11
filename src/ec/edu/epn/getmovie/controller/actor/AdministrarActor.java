@@ -35,16 +35,17 @@ public class AdministrarActor extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		Usuario usr = (Usuario) request.getSession().getAttribute("usuarioActivo");
-
 		if (usr == null) {
 			getServletConfig().getServletContext().getRequestDispatcher("/home").forward(request, response);
 		} else {
 			ServiceActor sa = new ServiceActor();
-			String nombreActor = request.getParameter("nombre");
+			String nombreActor = request.getParameter("nombreActor");
+			
 			if (nombreActor == null)
-				nombreActor = "";
+				nombreActor = "";			
 			Collection<Actor> listaActor = sa.listarActor(nombreActor);
-			request.setAttribute("listaActores", listaActor);
+			request.setAttribute("listaActor", listaActor);
+			
 			getServletConfig().getServletContext().getRequestDispatcher("/vistas/actor/administrar.jsp")
 					.forward(request, response);
 		}

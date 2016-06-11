@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.sun.media.sound.DirectAudioDeviceProvider;
 
 import ec.edu.epn.getmovie.model.Director;
+import ec.edu.epn.getmovie.model.Usuario;
 import ec.edu.epn.getmovie.model.service.director.ServiceDirector;
 
 /**
@@ -33,8 +34,13 @@ public class RegistrarDirector extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		getServletConfig().getServletContext().getRequestDispatcher("/vistas/director/registrar.jsp").forward(request, response);
-		doPost(request, response);
+		Usuario usr = (Usuario) request.getSession().getAttribute("usuarioActivo");
+		if (usr == null) {
+			getServletConfig().getServletContext().getRequestDispatcher("/home").forward(request, response);
+		} else {
+			getServletConfig().getServletContext().getRequestDispatcher("/vistas/director/registrar.jsp").forward(request, response);
+			doPost(request, response);
+		}
 	}
 
 	/**
@@ -45,7 +51,6 @@ public class RegistrarDirector extends HttpServlet {
 		String nombre = request.getParameter("nombre");
 		String fecha = request.getParameter("fecha");
 		String genero = request.getParameter("genero");
-		String fotoDirector = request.getParameter("fotoDirector");
 		if(nombre==null&&fecha==null&&genero==null){
 			getServletConfig().getServletContext().getRequestDispatcher("/director/registrar")
 				.forward(request, response);
@@ -53,9 +58,10 @@ public class RegistrarDirector extends HttpServlet {
 		Director d = new Director();
 		ServiceDirector sd = new ServiceDirector();
 		d.setNombredirector(nombre);
-		d.setFotodirector(fotoDirector);
+		d.setGenero(genero);
+		d.setNacimiento(fecha);
 		sd.crearDirector(d);
-		getServletConfig().getServletContext().getRequestDispatcher("/home")
+		getServletConfig().getServletContext().getRequestDispatcher("/director/home")
 			.forward(request, response);
 	}
 

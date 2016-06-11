@@ -8,11 +8,12 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import ec.edu.epn.getmovie.model.Actor;
 import ec.edu.epn.getmovie.model.Director;
+import ec.edu.epn.getmovie.model.Director;
+import ec.edu.epn.getmovie.model.Genero;
 import ec.edu.epn.getmovie.model.Usuario;
-import ec.edu.epn.getmovie.model.service.actor.ServiceActor;
 import ec.edu.epn.getmovie.model.service.director.ServiceDirector;
+import ec.edu.epn.getmovie.service.genero.ServiceGenero;
 
 /**
  * Servlet implementation class InfoDirector
@@ -38,12 +39,13 @@ public class InfoDirector extends HttpServlet {
 		if (usr == null) {
 			getServletConfig().getServletContext().getRequestDispatcher("/home").forward(request, response);
 		} else {
-			String idDirector=request.getParameter("directorInfo");
-			ServiceDirector sa = new ServiceDirector();
-			Director d = sa.buscarDirector(Integer.parseInt(idDirector));
-			request.getSession().setAttribute("directorInf", d);
-			getServletConfig().getServletContext().getRequestDispatcher("/vistas/director/info.jsp")
-				.forward(request, response);
+			ServiceDirector sd = new ServiceDirector();
+			String idDirector = request.getParameter("directorInfo");
+			if (idDirector == null)
+				idDirector = "";
+			Director d = sd.buscarDirector((int)Integer.parseInt(idDirector));
+			request.setAttribute("directorInf", d);
+			getServletConfig().getServletContext().getRequestDispatcher("/vistas/director/infoDirector.jsp").forward(request, response);
 		}
 	}
 

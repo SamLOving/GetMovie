@@ -33,7 +33,7 @@ public class ServiceDirector {
 	}
 	public void eliminarDirector(int idDirector) {
 		EntityManager em = emf.createEntityManager();
-		Director director = em.getReference(Director.class, idDirector);
+		Director director = em.find(Director.class, idDirector);
 		em.getTransaction().begin();	
 		em.remove(director);
 		em.getTransaction().commit();
@@ -41,7 +41,7 @@ public class ServiceDirector {
 	}
 	public void modificarDirector(Director directorDespues){
 		EntityManager em = emf.createEntityManager();
-		Director directorAntes = em.getReference(Director.class, directorDespues.getIddirector());
+		Director directorAntes = em.find(Director.class, directorDespues.getIddirector());
 		em.getTransaction().begin();
 		directorAntes.setNombredirector(directorDespues.getNombredirector());
 		directorAntes.setGenero(directorDespues.getGenero());

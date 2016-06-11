@@ -14,6 +14,7 @@ import com.sun.media.sound.DirectAudioDeviceProvider;
 import ec.edu.epn.getmovie.model.Actor;
 import ec.edu.epn.getmovie.model.Director;
 import ec.edu.epn.getmovie.model.Usuario;
+import ec.edu.epn.getmovie.model.service.actor.ServiceActor;
 import ec.edu.epn.getmovie.model.service.director.ServiceDirector;
 
 /**
@@ -37,18 +38,17 @@ public class AdministrarDirector extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		Usuario usr = (Usuario) request.getSession().getAttribute("usuarioActivo");
-		if(usr==null){
-			getServletConfig().getServletContext().getRequestDispatcher("/home")
-				.forward(request, response);
-		}
-		else {
+		if (usr == null) {
+			getServletConfig().getServletContext().getRequestDispatcher("/home").forward(request, response);
+		} else {
 			ServiceDirector sd = new ServiceDirector();
-			Director d = new Director();
 			String nombreDirector = request.getParameter("nombreDirector");
+			
 			if (nombreDirector == null)
-				nombreDirector = "";
+				nombreDirector = "";			
 			Collection<Director> listaDirector = sd.listarDirector(nombreDirector);
-			request.setAttribute("listaDirectores", listaDirector);
+			request.setAttribute("listaDirector", listaDirector);
+			
 			getServletConfig().getServletContext().getRequestDispatcher("/vistas/director/administrar.jsp")
 					.forward(request, response);
 		}

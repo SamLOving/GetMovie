@@ -20,14 +20,14 @@
 						<label for="nombre" class="col-lg-2 control-label">Nombre</label>
 						<div class="col-lg-10">
 							<input type="text" class="form-control" id="nombre" name="nombre"
-								placeholder="Nombre" value="<%=d.getNombredirector()%>">
+								placeholder="Nombre" value="<%=d.getNombredirector()%>" required/>
 						</div>
 					</div>
 					<div class="form-group">
 						<label for="fecha" class="col-lg-2 control-label">Fecha de nacimiento</label>
 						<div class="col-lg-10">
 							<input type="date" class="form-control" id="fecha" placeholder="dd-mm-yyyy" 
-							name="fecha" value="<%= d.getNacimiento()%>"/>
+							name="fecha" value="<%= d.getNacimiento()%>" required/>
 						</div>
 					</div>
 					<div class="form-group">
@@ -47,12 +47,6 @@
         					</div>
       					</div>
     				</div>
-					<div class="form-group">
-						<label for="imagenDirector" class="col-lg-2 control-label">Foto</label>
-						<div class="col-lg-10">
-							<input type="file" id="imagenDirector" value="<%=d.getFotodirector()%>"/>
-						</div>
-					</div>
 					<input type="hidden" name="idDirector" value="<%=d.getIddirector()%>"/>
 					<div>
 						<button type="submit" class="btn btn-primary" data-container="body"

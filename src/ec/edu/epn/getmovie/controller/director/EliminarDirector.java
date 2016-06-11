@@ -44,9 +44,9 @@ public class EliminarDirector extends HttpServlet {
 		if (usr == null) {
 			getServletConfig().getServletContext().getRequestDispatcher("/home").forward(request, response);
 		} else {
-			ServiceDirector sd = new ServiceDirector();
+			ServiceDirector sa = new ServiceDirector();
 			String directorEliminar = (String) request.getParameter("directorEliminar");
-			sd.eliminarDirector(Integer.parseInt(directorEliminar));
+			sa.eliminarDirector(Integer.parseInt(directorEliminar));
 			getServletConfig().getServletContext().getRequestDispatcher("/director/administrar")
 				.forward(request, response);
 		}

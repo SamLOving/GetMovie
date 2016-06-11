@@ -11,7 +11,7 @@ import java.util.List;
  */
 @Entity
 @Table(name = "DIRECTOR")
-@NamedQuery(name="Director.findByNombre", query="SELECT d FROM Director d where nombredirector like :nombre")
+@NamedQuery(name="Director.findByNombre", query="SELECT d FROM Director d where d.nombredirector like :nombre")
 public class Director implements Serializable {
 	private static final long serialVersionUID = 1L;
 

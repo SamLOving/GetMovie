@@ -12,19 +12,19 @@
 		<div class="col-lg-9">
 			<form class="form-horizontal" method="post" action="${pageContext.request.contextPath}/director/registrar">
 				<fieldset>
-					<legend>Registro de Actor</legend>
+					<legend>Registro de Director</legend>
 					<div class="form-group">
 						<label for="nombre" class="col-lg-2 control-label">Nombre</label>
 						<div class="col-lg-10">
 							<input type="text" class="form-control" id="Nombre"
-								placeholder="Nombre" name="nombre">
+								placeholder="Nombre" name="nombre" required>
 						</div>
 					</div>
 					<div class="form-group">
 						<label for="fecha" class="col-lg-2 control-label">Fecha de nacimiento</label>
 						<div class="col-lg-10">
 							<input type="date" class="form-control" id="fecha" placeholder="yyyy-mm-dd" 
-								name="fecha"/>
+								name="fecha" required/>
 						</div>
 					</div>
 					<div class="form-group">
@@ -44,12 +44,6 @@
         					</div>
       					</div>
     				</div>
-					<div class="form-group">
-						<label for="imagenActor" class="col-lg-2 control-label">Foto</label>
-						<div class="col-lg-10">
-							<input type="file" id="imagenDirector" name="fotoDirector"/>
-						</div>
-					</div>
 					<div>
 						<button type="submit" class="btn btn-primary" data-container="body"
 							data-toggle="popover" data-placement="top">Registrar</button>

@@ -3,7 +3,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <% 
-	Collection<Actor> listaActores = (Collection<Actor>)request.getAttribute("listaActores");
+	Collection<Actor> listaActores = (Collection<Actor>)request.getAttribute("listaActor");
 %>
 <jsp:include page="/templates/header.jsp"></jsp:include>
 <section class="container">
@@ -45,12 +45,14 @@
 
 							<tbody>
 							<%
+								try{
+									
 								for (Actor actor:listaActores){
 							%>
 								<tr>
 									<td><%=actor.getNombreactor() %></td>
 									<td>
-										<form method="post"
+										<form method="get"
 											action="${pageContext.request.contextPath}/actor/modificar">
 											<button type="submit" class="btn btn-default" value="<%=actor.getIdactor() %>"
 												name="actorModificar">
@@ -78,6 +80,8 @@
 									</td>
 								</tr>
 								<%
+								} }catch(Exception e){
+									System.out.println("No hay lista de actores");
 								}
 								%>
 							</tbody>

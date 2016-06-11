@@ -33,8 +33,13 @@ public class RegistrarActor extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		getServletConfig().getServletContext().getRequestDispatcher("/vistas/actor/registrar.jsp").forward(request, response);
-		doPost(request, response);
+		Usuario usr = (Usuario) request.getSession().getAttribute("usuarioActivo");
+		if (usr == null) {
+			getServletConfig().getServletContext().getRequestDispatcher("/home").forward(request, response);
+		} else {
+			getServletConfig().getServletContext().getRequestDispatcher("/vistas/actor/registrar.jsp").forward(request, response);
+			doPost(request, response);
+		}
 	}
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
@@ -46,22 +51,19 @@ public class RegistrarActor extends HttpServlet {
 			String fecha  = request.getParameter("fecha");
 			String genero = request.getParameter("genero");
 			String oscars = request.getParameter("oscars");
-			String imagenActor = request.getParameter("imagenActor");
 			if(nombre==null&&fecha==null&&genero==null&&oscars==null){
 				getServletConfig().getServletContext().getRequestDispatcher("/actor/registrar")
 					.forward(request, response);
 			}
 			else{
-				imagenActor="";
 				ServiceActor sa = new ServiceActor();
 				Actor actor = new Actor();
 				actor.setNombreactor(nombre);
-				actor.setFotoactor(imagenActor);
 				actor.setGenero(genero);
 				actor.setOscars(Integer.parseInt(oscars));
-				actor.setFotoactor(imagenActor);
+				actor.setNacimiento(fecha);
 				sa.crearActor(actor);
-				getServletConfig().getServletContext().getRequestDispatcher("/home")
+				getServletConfig().getServletContext().getRequestDispatcher("/actor/home")
 					.forward(request, response);
 		}
 	}

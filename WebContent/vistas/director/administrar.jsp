@@ -2,7 +2,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <%
-	Collection<Director> listaDirectores = (Collection<Director>)request.getAttribute("listaDirectores");
+	Collection<Director> listaDirectores = (Collection<Director>)request.getAttribute("listaDirector");
 %>
 <jsp:include page="/templates/header.jsp"></jsp:include>
 <section class="container">
@@ -13,7 +13,7 @@
 	</ul>
 	<div class="row">
 		<div class="col-lg-9">
-			<form class="form-horizontal" id="loginForm">
+			<form class="form-horizontal" id="loginForm" method="get" action="${pageContext.request.contextPath}/director/administrar">
 				<fieldset>
 					<legend>Administraci&oacute;n de Directores</legend>
 					<div>
@@ -48,7 +48,7 @@
 								for(Director d:listaDirectores){
 							%>
 								<tr>
-									<td><%=d.getGenero() %></td>
+									<td><%=d.getNombredirector() %></td>
 									<td>
 										<form method="get"
 											action="${pageContext.request.contextPath}/director/modificar">
@@ -59,9 +59,9 @@
 										</form>
 									</td>
 									<td>
-										<form method="post"
-											action="${pageContext.request.contextPath}/director/home">
-											<button type="submit" class="btn btn-default" value="<%=d.getIddirector() %>"
+										<form method="get"
+											action="${pageContext.request.contextPath}/director/eliminar">
+											<button type="submit" class="btn btn-default" value="<%=d.getIddirector()%>"
 												name="directorEliminar">
 												<i class="material-icons md-16">&#xE872;</i>
 											</button>

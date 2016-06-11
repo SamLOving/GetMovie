@@ -55,7 +55,7 @@ public class ModificarDirector extends HttpServlet {
 		String nombre = request.getParameter("nombre");
 		String fecha = request.getParameter("fecha");
 		String genero = request.getParameter("genero");
-		String fotoDirector = request.getParameter("fotoDirector");
+		String idDirector = request.getParameter("idDirector");
 		if(nombre==null&&fecha==null&&genero==null){
 			getServletConfig().getServletContext().getRequestDispatcher("/home")
 				.forward(request, response);
@@ -63,11 +63,11 @@ public class ModificarDirector extends HttpServlet {
 		Director d = new Director();
 		ServiceDirector sd = new ServiceDirector();
 		d.setNombredirector(nombre);
-		d.setFotodirector("");
 		d.setGenero(genero);
 		d.setNacimiento(fecha);
+		d.setIddirector(Integer.parseInt(idDirector));
 		sd.modificarDirector(d);
-		getServletConfig().getServletContext().getRequestDispatcher("/home")
+		getServletConfig().getServletContext().getRequestDispatcher("/director/home")
 			.forward(request, response);
 
 	}

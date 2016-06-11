@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import ec.edu.epn.getmovie.model.Actor;
+import ec.edu.epn.getmovie.model.Actor;
 import ec.edu.epn.getmovie.model.Usuario;
 import ec.edu.epn.getmovie.model.service.actor.ServiceActor;
 
@@ -36,12 +37,13 @@ public class InfoActor extends HttpServlet {
 		if (usr == null) {
 			getServletConfig().getServletContext().getRequestDispatcher("/home").forward(request, response);
 		} else {
-			String idActor=request.getParameter("actorInfo");
 			ServiceActor sa = new ServiceActor();
-			Actor actor = sa.buscarActor(Integer.parseInt(idActor));
-			request.getSession().setAttribute("actorInf", actor);
-			getServletConfig().getServletContext().getRequestDispatcher("/vistas/actor/info.jsp")
-				.forward(request, response);
+			String idActor = request.getParameter("actorInfo");
+			if (idActor == null)
+				idActor = "";
+			Actor a = sa.buscarActor((int)Integer.parseInt(idActor));
+			request.setAttribute("actorInf", a);
+			getServletConfig().getServletContext().getRequestDispatcher("/vistas/actor/infoActor.jsp").forward(request, response);
 		}
 	}
 

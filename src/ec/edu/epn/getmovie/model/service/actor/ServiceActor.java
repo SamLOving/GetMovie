@@ -23,10 +23,10 @@ public class ServiceActor {
 		em.close();
 	}
 	@SuppressWarnings("unchecked")
-	public Collection<Actor> listarActor(int idActor) {
+	public Collection<Actor> listarActor(String nombreActor) {
 		EntityManager em = emf.createEntityManager();
-		Query q = em.createNamedQuery("Actor.findById");
-		q.setParameter("correo", "%" + idActor + "%");
+		Query q = em.createNamedQuery("Actor.findByNombre");
+		q.setParameter("nombre", "%" + nombreActor + "%");
 		Collection<Actor> listaActor = q.getResultList();
 		em.close();	
 		return listaActor;
@@ -37,7 +37,16 @@ public class ServiceActor {
 		em.remove(actor);
 		em.close();
 	}
-	public void modificarActor(int idActor){
-		
+	public void modificarActor(Actor actorPost){
+		EntityManager em = emf.createEntityManager();
+		Actor actorGet = em.find(Actor.class, actorPost.getIdactor());
+		em.getTransaction().begin();
+		actorGet.setNombreactor(actorPost.getNombreactor());
+		actorGet.setGenero(actorPost.getGenero());
+		actorGet.setOscars(actorPost.getOscars());
+		actorGet.setNacimiento(actorPost.getNacimiento());
+		actorGet.setFotoactor(actorPost.getFotoactor());
+		em.getTransaction().commit();
+		em.close();
 	}
 }

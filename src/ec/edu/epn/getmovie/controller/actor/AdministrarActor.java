@@ -40,10 +40,10 @@ public class AdministrarActor extends HttpServlet {
 			getServletConfig().getServletContext().getRequestDispatcher("/home").forward(request, response);
 		} else {
 			ServiceActor sa = new ServiceActor();
-			String idActor = request.getParameter("idActor");
-			if (idActor == null)
-				idActor = "";
-			Collection<Actor> listaActor = sa.listarActor(Integer.parseInt(idActor));
+			String nombreActor = request.getParameter("nombre");
+			if (nombreActor == null)
+				nombreActor = "";
+			Collection<Actor> listaActor = sa.listarActor(nombreActor);
 			request.setAttribute("listaActores", listaActor);
 			getServletConfig().getServletContext().getRequestDispatcher("/vistas/actor/administrar.jsp")
 					.forward(request, response);

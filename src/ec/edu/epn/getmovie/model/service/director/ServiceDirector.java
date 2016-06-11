@@ -23,10 +23,10 @@ public class ServiceDirector {
 		em.close();
 	}
 	@SuppressWarnings("unchecked")
-	public Collection<Director> listarDirector(int idDirector) {
+	public Collection<Director> listarDirector(String nombreDirector) {
 		EntityManager em = emf.createEntityManager();
-		Query q = em.createNamedQuery("Director.findById");
-		q.setParameter("correo", "%" + idDirector + "%");
+		Query q = em.createNamedQuery("Director.findByNombre");
+		q.setParameter("nombre", "%" + nombreDirector + "%");
 		Collection<Director> listaDirector = q.getResultList();
 		em.close();	
 		return listaDirector;
@@ -34,10 +34,20 @@ public class ServiceDirector {
 	public void eliminarDirector(int idDirector) {
 		EntityManager em = emf.createEntityManager();
 		Director director = em.getReference(Director.class, idDirector);
+		em.getTransaction().begin();	
 		em.remove(director);
+		em.getTransaction().commit();
 		em.close();
 	}
-	public void modificarDirector(int idDirector){
-		
+	public void modificarDirector(Director directorDespues){
+		EntityManager em = emf.createEntityManager();
+		Director directorAntes = em.getReference(Director.class, directorDespues.getIddirector());
+		em.getTransaction().begin();
+		directorAntes.setNombredirector(directorDespues.getNombredirector());
+		directorAntes.setGenero(directorDespues.getGenero());
+		directorAntes.setNacimiento(directorDespues.getNacimiento());
+		directorAntes.setFotodirector(directorDespues.getFotodirector());
+		em.getTransaction().commit();
+		em.close();
 	}
 }

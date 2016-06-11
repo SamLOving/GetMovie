@@ -44,10 +44,10 @@ public class AdministrarDirector extends HttpServlet {
 		else {
 			ServiceDirector sd = new ServiceDirector();
 			Director d = new Director();
-			String idDirector = request.getParameter("idDirector");
-			if (idDirector == null)
-				idDirector = "";
-			Collection<Director> listaDirector = sd.listarDirector(Integer.parseInt(idDirector));
+			String nombreDirector = request.getParameter("nombreDirector");
+			if (nombreDirector == null)
+				nombreDirector = "";
+			Collection<Director> listaDirector = sd.listarDirector(nombreDirector);
 			request.setAttribute("listaDirectores", listaDirector);
 			getServletConfig().getServletContext().getRequestDispatcher("/vistas/director/administrar.jsp")
 					.forward(request, response);

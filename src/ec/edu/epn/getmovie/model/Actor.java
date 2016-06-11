@@ -12,7 +12,7 @@ import java.util.List;
  */
 @Entity
 @Table(name = "ACTOR")
-@NamedQuery(name="Actor.findAll", query="SELECT a FROM Actor a")
+@NamedQuery(name="Actor.findByNombre", query="SELECT a FROM Actor a where a.nombreactor like :nombre")
 public class Actor implements Serializable {
 	private static final long serialVersionUID = 1L;
 
@@ -24,6 +24,12 @@ public class Actor implements Serializable {
 
 	private String nombreactor;
 
+	private String genero;
+	
+	private String nacimiento;
+	
+	private int oscars;
+	
 	//bi-directional many-to-one association to Pelicula
 	@OneToMany(mappedBy="actor", fetch=FetchType.EAGER)
 	private List<Pelicula> peliculas;
@@ -53,6 +59,30 @@ public class Actor implements Serializable {
 
 	public void setNombreactor(String nombreactor) {
 		this.nombreactor = nombreactor;
+	}
+	
+	public String getGenero() {
+		return genero;
+	}
+
+	public void setGenero(String genero) {
+		this.genero = genero;
+	}
+
+	public String getNacimiento() {
+		return nacimiento;
+	}
+
+	public void setNacimiento(String nacimiento) {
+		this.nacimiento = nacimiento;
+	}
+
+	public int getOscars() {
+		return oscars;
+	}
+
+	public void setOscars(int oscars) {
+		this.oscars = oscars;
 	}
 
 	public List<Pelicula> getPeliculas() {

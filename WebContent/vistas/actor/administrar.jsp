@@ -1,16 +1,20 @@
+<%@page import="ec.edu.epn.getmovie.model.Actor"%>
+<%@page import="java.util.Collection"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
-    
+<% 
+	Collection<Actor> listaActores = (Collection<Actor>)request.getAttribute("listaActores");
+%>
 <jsp:include page="/templates/header.jsp"></jsp:include>
 <section class="container">
-	<ul class="breadcrumb">
-		<li><a href="${pageContext.request.contextPath}/vistas/home.jsp">Home</a>
-		<li><a href="${pageContext.request.contextPath}/vistas/actor/home.jsp">Actor</a></li>
+<ul class="breadcrumb">
+		<li><a href="${pageContext.request.contextPath}/home">Home</a>
+		<li><a href="${pageContext.request.contextPath}/actor/home">Actor</a></li>
   		<li class="active">Administrar</li>
 	</ul>
 	<div class="row">
 		<div class="col-lg-9">
-			<form class="form-horizontal" id="loginForm">
+			<form class="form-horizontal" id="loginForm" method="get" action="${pageContext.request.contextPath}/actor/administrar"]>
 				<fieldset>
 					<legend>Administración de Actores</legend>
 					<div>
@@ -40,12 +44,15 @@
 							</thead>
 
 							<tbody>
+							<%
+								for (Actor actor:listaActores){
+							%>
 								<tr>
-									<td>Leonardo Di Caprio</td>
+									<td><%=actor.getNombreactor() %></td>
 									<td>
-										<form method="get"
-											action="${pageContext.request.contextPath}/vistas/actor/modificar.jsp">
-											<button type="submit" class="btn btn-default" value=""
+										<form method="post"
+											action="${pageContext.request.contextPath}/actor/modificar">
+											<button type="submit" class="btn btn-default" value="<%=actor.getIdactor() %>"
 												name="actorModificar">
 												<span class="material-icons md-16">&#xE150;</span>
 											</button>
@@ -53,8 +60,8 @@
 									</td>
 									<td>
 										<form method="post"
-											action="${pageContext.request.contextPath}/vistas/actor/home.jsp">
-											<button type="submit" class="btn btn-default" value=""
+											action="${pageContext.request.contextPath}/actor/eliminar">
+											<button type="submit" class="btn btn-default" value="<%=actor.getIdactor()%>"
 												name="actorEliminar">
 												<i class="material-icons md-16">&#xE872;</i>
 											</button>
@@ -62,14 +69,17 @@
 									</td>
 									<td>
 										<form method="get"
-											action="${pageContext.request.contextPath}/vistas/actor/info.jsp">
-											<button type="submit" class="btn btn-default" value=""
+											action="${pageContext.request.contextPath}/actor/info">
+											<button type="submit" class="btn btn-default" value="<%=actor.getIdactor() %>"
 												name="actorInfo">
 												<i class="material-icons">&#xE8F4;</i>
 											</button>
 										</form>
 									</td>
 								</tr>
+								<%
+								}
+								%>
 							</tbody>
 						</table>
 					</div>

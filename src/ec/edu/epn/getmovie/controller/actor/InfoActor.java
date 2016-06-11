@@ -39,7 +39,7 @@ public class InfoActor extends HttpServlet {
 			String idActor=request.getParameter("actorInfo");
 			ServiceActor sa = new ServiceActor();
 			Actor actor = sa.buscarActor(Integer.parseInt(idActor));
-			request.getSession().setAttribute("actorInfo", actor);
+			request.getSession().setAttribute("actorInf", actor);
 			getServletConfig().getServletContext().getRequestDispatcher("/vistas/actor/info.jsp")
 				.forward(request, response);
 		}

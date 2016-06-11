@@ -4,13 +4,13 @@
 <jsp:include page="/templates/header.jsp"></jsp:include>
 <section class="container">
 	<ul class="breadcrumb">
-		<li><a href="${pageContext.request.contextPath}/vistas/home.jsp">Home</a>
-		<li><a href="${pageContext.request.contextPath}/vistas/director/home.jsp">Director</a></li>
+		<li><a href="${pageContext.request.contextPath}/home">Home</a>
+		<li><a href="${pageContext.request.contextPath}/director/home">Director</a></li>
   		<li class="active">Registrar</li>
 	</ul>
 	<div class="row">
 		<div class="col-lg-9">
-			<form class="form-horizontal">
+			<form class="form-horizontal" method="post" action="${pageContext.request.contextPath}/director/registrar">
 				<fieldset>
 					<legend>Registro de Actor</legend>
 					<div class="form-group">
@@ -50,12 +50,13 @@
 							<input type="file" id="imagenDirector" name="fotoDirector"/>
 						</div>
 					</div>
+					<div>
+						<button type="submit" class="btn btn-primary" data-container="body"
+							data-toggle="popover" data-placement="top">Registrar</button>
+					</div>
 				</fieldset>
 			</form>
-			<div>
-				<button type="submit" class="btn btn-primary" data-container="body"
-					data-toggle="popover" data-placement="top">Registrar</button>
-			</div>
+			
 		</div>
 		<div>
 			<div class="col-lg-3">

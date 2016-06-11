@@ -41,7 +41,7 @@ public class ModificarDirector extends HttpServlet {
 			ServiceDirector sd = new ServiceDirector();
 			String idDirector = (String) request.getParameter("directorModificar");
 			Director directorModificar = sd.buscarDirector((int)Integer.parseInt(idDirector));
-			request.setAttribute("directorModificar", directorModificar);
+			request.setAttribute("directorModifica", directorModificar);
 			getServletConfig().getServletContext().getRequestDispatcher("/vistas/director/modificar.jsp").forward(request,
 					response);
 		}
@@ -52,7 +52,24 @@ public class ModificarDirector extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		doGet(request, response);
+		String nombre = request.getParameter("nombre");
+		String fecha = request.getParameter("fecha");
+		String genero = request.getParameter("genero");
+		String fotoDirector = request.getParameter("fotoDirector");
+		if(nombre==null&&fecha==null&&genero==null){
+			getServletConfig().getServletContext().getRequestDispatcher("/home")
+				.forward(request, response);
+		}
+		Director d = new Director();
+		ServiceDirector sd = new ServiceDirector();
+		d.setNombredirector(nombre);
+		d.setFotodirector("");
+		d.setGenero(genero);
+		d.setNacimiento(fecha);
+		sd.modificarDirector(d);
+		getServletConfig().getServletContext().getRequestDispatcher("/home")
+			.forward(request, response);
+
 	}
 
 }

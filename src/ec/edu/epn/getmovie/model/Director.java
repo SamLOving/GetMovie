@@ -11,7 +11,7 @@ import java.util.List;
  */
 @Entity
 @Table(name = "DIRECTOR")
-@NamedQuery(name="Director.findAll", query="SELECT d FROM Director d")
+@NamedQuery(name="Director.findByNombre", query="SELECT d FROM Director d where nombredirector like :nombre")
 public class Director implements Serializable {
 	private static final long serialVersionUID = 1L;
 
@@ -22,6 +22,10 @@ public class Director implements Serializable {
 	private String fotodirector;
 
 	private String nombredirector;
+	
+	private String nacimiento;
+	
+	private String genero;
 
 	//bi-directional many-to-one association to Pelicula
 	@OneToMany(mappedBy="director", fetch=FetchType.EAGER)
@@ -52,6 +56,22 @@ public class Director implements Serializable {
 
 	public void setNombredirector(String nombredirector) {
 		this.nombredirector = nombredirector;
+	}
+
+	public String getNacimiento() {
+		return nacimiento;
+	}
+
+	public void setNacimiento(String nacimiento) {
+		this.nacimiento = nacimiento;
+	}
+
+	public String getGenero() {
+		return genero;
+	}
+
+	public void setGenero(String genero) {
+		this.genero = genero;
 	}
 
 	public List<Pelicula> getPeliculas() {

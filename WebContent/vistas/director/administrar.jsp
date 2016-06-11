@@ -1,11 +1,14 @@
+<%@page import="java.util.Collection, ec.edu.epn.getmovie.model.*"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
-    
+<%
+	Collection<Director> listaDirectores = (Collection<Director>)request.getAttribute("listaDirectores");
+%>
 <jsp:include page="/templates/header.jsp"></jsp:include>
 <section class="container">
 <ul class="breadcrumb">
-		<li><a href="${pageContext.request.contextPath}/vistas/home.jsp">Home</a>
-		<li><a href="${pageContext.request.contextPath}/vistas/director/home.jsp">Director</a></li>
+		<li><a href="${pageContext.request.contextPath}/home">Home</a>
+		<li><a href="${pageContext.request.contextPath}/director/home">Director</a></li>
   		<li class="active">Administrar</li>
 	</ul>
 	<div class="row">
@@ -40,12 +43,16 @@
 							</thead>
 
 							<tbody>
+							<%
+								try{
+								for(Director d:listaDirectores){
+							%>
 								<tr>
-									<td>Bryan Singer</td>
+									<td><%=d.getGenero() %></td>
 									<td>
 										<form method="get"
-											action="${pageContext.request.contextPath}/vistas/director/modificar.jsp">
-											<button type="submit" class="btn btn-default" value=""
+											action="${pageContext.request.contextPath}/director/modificar">
+											<button type="submit" class="btn btn-default" value="<%=d.getIddirector() %>"
 												name="directorModificar">
 												<span class="material-icons md-16">&#xE150;</span>
 											</button>
@@ -53,8 +60,8 @@
 									</td>
 									<td>
 										<form method="post"
-											action="${pageContext.request.contextPath}/vistas/director/home.jsp">
-											<button type="submit" class="btn btn-default" value=""
+											action="${pageContext.request.contextPath}/director/home">
+											<button type="submit" class="btn btn-default" value="<%=d.getIddirector() %>"
 												name="directorEliminar">
 												<i class="material-icons md-16">&#xE872;</i>
 											</button>
@@ -62,14 +69,19 @@
 									</td>
 									<td>
 										<form method="get"
-											action="${pageContext.request.contextPath}/vistas/director/info.jsp">
-											<button type="submit" class="btn btn-default" value=""
+											action="${pageContext.request.contextPath}/director/info">
+											<button type="submit" class="btn btn-default" value="<%=d.getIddirector() %>"
 												name="directorInfo">
 												<i class="material-icons">&#xE8F4;</i>
 											</button>
 										</form>
 									</td>
 								</tr>
+								<%
+								} }catch(Exception e){
+									System.out.println("error");
+								}
+								%>
 							</tbody>
 						</table>
 					</div>

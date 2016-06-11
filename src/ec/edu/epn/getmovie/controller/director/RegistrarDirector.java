@@ -33,6 +33,7 @@ public class RegistrarDirector extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		getServletConfig().getServletContext().getRequestDispatcher("/vistas/director/registrar.jsp").forward(request, response);
 		doPost(request, response);
 	}
 
@@ -46,7 +47,7 @@ public class RegistrarDirector extends HttpServlet {
 		String genero = request.getParameter("genero");
 		String fotoDirector = request.getParameter("fotoDirector");
 		if(nombre==null&&fecha==null&&genero==null){
-			getServletConfig().getServletContext().getRequestDispatcher("/home")
+			getServletConfig().getServletContext().getRequestDispatcher("/director/registrar")
 				.forward(request, response);
 		}
 		Director d = new Director();

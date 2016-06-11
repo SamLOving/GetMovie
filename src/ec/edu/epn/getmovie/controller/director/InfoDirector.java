@@ -41,7 +41,7 @@ public class InfoDirector extends HttpServlet {
 			String idDirector=request.getParameter("directorInfo");
 			ServiceDirector sa = new ServiceDirector();
 			Director d = sa.buscarDirector(Integer.parseInt(idDirector));
-			request.getSession().setAttribute("directorInfo", d);
+			request.getSession().setAttribute("directorInf", d);
 			getServletConfig().getServletContext().getRequestDispatcher("/vistas/director/info.jsp")
 				.forward(request, response);
 		}

@@ -4,13 +4,13 @@
 <jsp:include page="/templates/header.jsp"></jsp:include>
 <section class="container">
 	<ul class="breadcrumb">
-		<li><a href="${pageContext.request.contextPath}/vistas/home.jsp">Home</a>
-		<li><a href="${pageContext.request.contextPath}/vistas/actor/home.jsp">Actor</a></li>
+		<li><a href="${pageContext.request.contextPath}/home">Home</a>
+		<li><a href="${pageContext.request.contextPath}/actor/home">Actor</a></li>
   		<li class="active">Registrar</li>
 	</ul>
 	<div class="row">
 		<div class="col-lg-9">
-			<form class="form-horizontal" method="post">
+			<form class="form-horizontal" method="post" action="registrar">
 				<fieldset>
 					<legend>Registro de Actor</legend>
 					<div class="form-group">
@@ -23,7 +23,8 @@
 					<div class="form-group">
 						<label for="fecha" class="col-lg-2 control-label">Fecha de nacimiento</label>
 						<div class="col-lg-10">
-							<input type="date" class="form-control" id="fecha" placeholder="yyyy-mm-dd" name="fecha"/>
+							<input type="date" class="form-control" id="fecha" placeholder="yyyy-mm-dd" 
+									name="fecha"/>
 						</div>
 					</div>
 					<div class="form-group">
@@ -46,7 +47,8 @@
 					<div class="form-group">
 						<label for="oscars" class="col-lg-2 control-label">N&uacute;mero de Oscars</label>
 						<div class="col-lg-10">
-							<input type="text" class="form-control" id="oscars" placeholder="Numero de oscars" name="oscars">
+							<input type="text" class="form-control" id="oscars" 
+							placeholder="Nro de oscars" name="oscars">
 						</div>
 					</div>
 					<div class="form-group">
@@ -55,12 +57,12 @@
 							<input type="file" id="imagenAutor" name="imagenAutor"/>
 						</div>
 					</div>
+					<div>
+						<button type="submit" class="btn btn-primary" data-container="body"
+						data-toggle="popover" data-placement="top">Registrar</button>
+					</div>
 				</fieldset>
 			</form>
-			<div>
-				<button type="submit" class="btn btn-primary" data-container="body"
-					data-toggle="popover" data-placement="top">Registrar</button>
-			</div>
 		</div>
 		<div>
 			<div class="col-lg-3">

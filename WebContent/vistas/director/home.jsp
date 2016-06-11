@@ -11,9 +11,9 @@
 	<h1>Men&uacute; de administraci&oacute;n de directores</h1>
 	<div class="row">
 		<div class="col-lg-9">
-			<a href="${pageContext.request.contextPath}/vistas/director/registrar.jsp" 
+			<a href="${pageContext.request.contextPath}/director/registrar" 
 				class="btn btn-default btn-lg btn-block">Registrar</a>
-			<a href="${pageContext.request.contextPath}/vistas/director/administrar.jsp"
+			<a href="${pageContext.request.contextPath}/director/administrar"
 				class="btn btn-default btn-lg btn-block">Administrar</a>
 		</div>
 		<div>

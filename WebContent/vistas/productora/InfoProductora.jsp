@@ -12,11 +12,11 @@
 		<li><a href="${pageContext.request.contextPath}/home">Home</a>
 		<li><a
 			href="${pageContext.request.contextPath}/productora/home">Productora</a></li>
-		<li class="active">Registrar</li>
+		<li class="active">Info</li>
 	</ul>
 	<div class="row">
 		<div class="col-lg-9">
-			<form class="form-horizontal">
+			<form class="form-horizontal" method="get" action="${pageContext.request.contextPath}/productora/info">
 				<fieldset>
 					<legend>Informaci&oacute;n de Productora</legend>
 					<div class="form-group">

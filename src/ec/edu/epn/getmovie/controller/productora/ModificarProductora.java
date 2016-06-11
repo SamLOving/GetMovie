@@ -42,9 +42,9 @@ public class ModificarProductora extends HttpServlet {
 			getServletConfig().getServletContext().getRequestDispatcher("/home").forward(request, response);
 		} else {
 			
-			String idProductora = request.getParameter("generoModificarDesdeVista");
+			String idProductora = request.getParameter("productoraModificarDesdeVista");
 			ServiceProductora sp = new ServiceProductora();
-			Productora productoraAModificar = sp.buscarProductora((int)Integer.parseInt(idProductora));
+			Productora productoraAModificar = sp.buscarProductora(Integer.parseInt(idProductora));
 
 			request.setAttribute("ProductoraModificadoParaLaVista",productoraAModificar);
 			RequestDispatcher rd = getServletContext().getRequestDispatcher(
@@ -58,6 +58,39 @@ public class ModificarProductora extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		
+		Usuario usr = (Usuario) request.getSession().getAttribute("usuarioActivo");
+
+		// para que no tenga error el servlet con valor null
+		if ( usr == null) {
+			// redireccionar a una vista
+			getServletConfig().getServletContext()
+					.getRequestDispatcher("/home")
+					.forward(request, response);
+
+		} else {
+			
+			ServiceProductora sp = new ServiceProductora();
+			Productora productoraAModificar = new Productora();
+			String idProductora = request.getParameter("idProductoraSeteadoModificado");
+			String nombreProductora = request.getParameter("nombreProductoraSeteadoModificado");
+			String paisProdcutora = request.getParameter("paisProductoraSeteadoModificado");
+			
+			System.out.println(nombreProductora+paisProdcutora+"\n\n");	
+			if (nombreProductora == null || paisProdcutora==null) {
+				getServletConfig().getServletContext().getRequestDispatcher("/vistas/genero/ModificarGenero.jsp").forward(request,
+						response);
+			} else {
+				productoraAModificar.setNombreproductora(nombreProductora);
+				productoraAModificar.setPaisproductora(paisProdcutora);
+				productoraAModificar.setIdproductora(Integer.parseInt(idProductora));
+				sp.modificarProductora(productoraAModificar);
+				
+				getServletConfig().getServletContext().getRequestDispatcher("/productora/administrar").forward(request, response);
+			}
+			
+		}
+		
 	}
 
 }

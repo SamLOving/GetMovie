@@ -44,9 +44,10 @@ public class ModificarGenero extends HttpServlet {
 			getServletConfig().getServletContext().getRequestDispatcher("/home").forward(request, response);
 		} else {
 			
+			
 			String idGenero = request.getParameter("generoModificarDesdeVista");
 			ServiceGenero sg = new ServiceGenero();
-			Genero generoAModificar = sg.buscarGenero((int)Integer.parseInt(idGenero));
+			Genero generoAModificar = sg.buscarGenero(Integer.parseInt(idGenero));
 
 			request.setAttribute("GeneroModificadoParaLaVista",generoAModificar);
 			RequestDispatcher rd = getServletContext().getRequestDispatcher(
@@ -65,36 +66,41 @@ public class ModificarGenero extends HttpServlet {
 		// TODO Auto-generated method stub
 
 		// variables que vienen desde las vistas
-		String nombreGenero = request.getParameter("nombreGeneroSeteadoModificado");
-		String descripcionGenero = request.getParameter("descripcionGeneroSeteadoModificado");
 		
+		Usuario usr = (Usuario) request.getSession().getAttribute("usuarioActivo");
 
 		// para que no tenga error el servlet con valor null
-		if (nombreGenero == null || descripcionGenero == null) {
+		if ( usr == null) {
 			// redireccionar a una vista
 			getServletConfig().getServletContext()
-					.getRequestDispatcher("/genero/home")
+					.getRequestDispatcher("/home")
 					.forward(request, response);
 
 		} else {
-			// colocar la informacion obtenida de las vistas en el objeto
 			
-			Genero genero = new Genero();
-			genero.setNombregenero(nombreGenero);
-			genero.setDescripciongenero(descripcionGenero);
-
-			// insertar en la base de datos
 			ServiceGenero sg = new ServiceGenero();
-			sg.modificarGenero(genero);
+			Genero generoAModificar = new Genero();
+			String idGenero = request.getParameter("idGeneroSeteadoModificado");
+			String nombreGenero = request.getParameter("nombreGeneroSeteadoModificado");
+			String descripcionGenero = request.getParameter("descripcionGeneroSeteadoModificado");
+			
+			System.out.println(nombreGenero+descripcionGenero+"\n\n");	
+			if (nombreGenero == null || descripcionGenero==null) {
+				getServletConfig().getServletContext().getRequestDispatcher("/vistas/genero/ModificarGenero.jsp").forward(request,
+						response);
+			} else {
+				generoAModificar.setIdgenero(Integer.parseInt(idGenero));
+				generoAModificar.setNombregenero(nombreGenero);
+				generoAModificar.setDescripciongenero(descripcionGenero);
+				
+				sg.modificarGenero(generoAModificar);
+				getServletConfig().getServletContext().getRequestDispatcher("/genero/administrar").forward(request,
+						response);
+			}
+			
+		}		
 
-			// redireccionar a una vista
-			getServletConfig().getServletContext()
-					.getRequestDispatcher("/home").forward(request, response);
-
-		}
-
-		// this.doGet(request, response);
-
+		
 	}
 
 }

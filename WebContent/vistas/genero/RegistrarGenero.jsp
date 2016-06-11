@@ -2,15 +2,17 @@
 	pageEncoding="ISO-8859-1"%>
 <jsp:include page="/templates/header.jsp"></jsp:include>
 <section class="container">
+
+
 	<ul class="breadcrumb">
-		<li><a href="${pageContext.request.contextPath}/vistas/home.jsp">Home</a>
+		<li><a href="${pageContext.request.contextPath}/home">Home</a>
 		<li><a
-			href="${pageContext.request.contextPath}/vistas/genero/HomeGenero.jsp">G&eacute;nero</a></li>
+			href="${pageContext.request.contextPath}/genero/home">G&eacute;nero</a></li>
 		<li class="active">Registrar</li>
 	</ul>
 	<div class="row">
 		<div class="col-lg-9">
-			<form class="form-horizontal" method="post">
+			<form class="form-horizontal" method="post" action="${pageContext.request.contextPath}/genero/registrar" >
 				<fieldset>
 					<legend>Registro de G&eacute;nero</legend>
 					<div class="form-group">

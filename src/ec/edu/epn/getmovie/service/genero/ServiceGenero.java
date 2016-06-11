@@ -42,13 +42,16 @@ public class ServiceGenero {
 		em.close();
 	}
 	
-	public void modificarGenero (Genero genero){
+	public void modificarGenero (Genero generoDesdeModificarGenero){
 		EntityManager em = emf.createEntityManager();
-		
+				
+		Genero generito = em.getReference(Genero.class, generoDesdeModificarGenero.getIdgenero());
+
+		generito.setNombregenero(generoDesdeModificarGenero.getNombregenero());
+		generito.setDescripciongenero(generoDesdeModificarGenero.getDescripciongenero());
 		
 		// permite iniciar la query
 		em.getTransaction().begin();
-		Genero generito = em.find(Genero.class, genero.getIdgenero());
 		//permite hacer la creacion del objeto, persist = insert
 		
 		em.persist(generito);

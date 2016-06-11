@@ -3,6 +3,11 @@
 <jsp:include page="/templates/header.jsp"></jsp:include>
 
 <section class="container">
+<ul class="breadcrumb">
+		<li><a href="${pageContext.request.contextPath}/home">Home</a>
+		<li><a href="${pageContext.request.contextPath}/genero/home">G&eacute;nero</a></li>
+		<li class="active">Home Genero</li>
+	</ul>
 	<h1>Men&uacute; de administraci&oacute;n de G&eacute;neros</h1>
 	<div class="row">
 		<div class="col-lg-9">

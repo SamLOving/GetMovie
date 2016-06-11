@@ -3,14 +3,14 @@
 <jsp:include page="/templates/header.jsp"></jsp:include>
 <section class="container">
 	<ul class="breadcrumb">
-		<li><a href="${pageContext.request.contextPath}/vistas/home.jsp">Home</a>
+		<li><a href="${pageContext.request.contextPath}/home">Home</a>
 		<li><a
-			href="${pageContext.request.contextPath}/vistas/productora/HomeProductora.jsp">Productora</a></li>
+			href="${pageContext.request.contextPath}/productora/home">Productora</a></li>
 		<li class="active">Registrar</li>
 	</ul>
 	<div class="row">
 		<div class="col-lg-9">
-			<form class="form-horizontal" method="post">
+			<form class="form-horizontal" method="post" action="${pageContext.request.contextPath}/productora/registrar">
 				<fieldset>
 					<legend>Registro de Productora</legend>
 					<div class="form-group">

@@ -8,9 +8,15 @@
 %>
 <jsp:include page="/templates/header.jsp"></jsp:include>
 <section class="container">
+<ul class="breadcrumb">
+		<li><a href="${pageContext.request.contextPath}/home">Home</a>
+		<li><a
+			href="${pageContext.request.contextPath}/productora/home">Productora</a></li>
+		<li class="active">Administrar</li>
+	</ul>
 	<div class="row">
 		<div class="col-lg-9">
-			<form class="form-horizontal" id="loginForm" method="get">
+			<form class="form-horizontal" id="loginForm" method="get" action="${pageContext.request.contextPath}/productora/administrar">
 				<fieldset>
 					<legend>Administraci&oacute;n de Productora</legend>
 					<div>

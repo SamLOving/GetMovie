@@ -35,9 +35,12 @@ public class ServiceProductora {
 		em.close();
 	}
 	
-	public void modificarProductora (int idproductora){
+	public void modificarProductora (Productora nuevaProductora){
 		EntityManager em = emf.createEntityManager();
-		Productora productora = em.getReference(Productora.class, idproductora);
+		Productora productora = em.getReference(Productora.class, nuevaProductora.getIdproductora());
+		
+		productora.setNombreproductora(nuevaProductora.getNombreproductora());
+		productora.setPaisproductora(nuevaProductora.getPaisproductora());
 		
 		// permite iniciar la query
 		em.getTransaction().begin();

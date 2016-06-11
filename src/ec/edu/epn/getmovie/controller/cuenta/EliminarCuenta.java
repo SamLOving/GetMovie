@@ -16,27 +16,31 @@ import ec.edu.epn.getmovie.model.service.ServiceCuenta;
 @WebServlet("/cuenta/eliminar")
 public class EliminarCuenta extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public EliminarCuenta() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
 
 	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#HttpServlet()
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	public EliminarCuenta() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	/**
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
+	 *      response)
+	 */
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		doPost(request, response);
 	}
 
 	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
+	 *      response)
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		Usuario usr = (Usuario) request.getSession().getAttribute("usuarioActivo");
 		
@@ -46,7 +50,12 @@ public class EliminarCuenta extends HttpServlet {
 			ServiceCuenta sc = new ServiceCuenta();
 			String usuarioEliminar = (String) request.getParameter("usuarioEliminar");
 			sc.eliminarUsuario(usuarioEliminar);
-			getServletConfig().getServletContext().getRequestDispatcher("/cuenta/administrar").forward(request, response);
+			if (usr.getCorreousr().equals(usuarioEliminar)) {
+				request.getSession().invalidate();
+				getServletConfig().getServletContext().getRequestDispatcher("/home").forward(request, response);
+			}
+			getServletConfig().getServletContext().getRequestDispatcher("/cuenta/administrar").forward(request,
+					response);
 		}
 	}
 

@@ -54,7 +54,7 @@ public class RegistrarUsuarioAdmin extends HttpServlet {
 			String confirmarClave = request.getParameter("confirmPassword");
 			
 			if (nombre == null || email == null || clave == null || confirmarClave == null || !clave.equals(confirmarClave)) {
-				getServletConfig().getServletContext().getRequestDispatcher("/vistas/cuenta/registrar.jsp").forward(request,
+				getServletConfig().getServletContext().getRequestDispatcher("/vistas/cuenta/registrarAdmin.jsp").forward(request,
 						response);
 			} else {
 				ServiceCuenta sc = new ServiceCuenta();

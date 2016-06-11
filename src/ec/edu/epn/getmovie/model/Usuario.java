@@ -11,7 +11,10 @@ import java.util.List;
  */
 @Entity 
 @Table(name = "USUARIO")
-@NamedQuery(name="Usuario.findById", query="SELECT u FROM Usuario u where u.correousr like :correo")
+@NamedQueries({
+	@NamedQuery(name="Usuario.findAll", query="SELECT u FROM Usuario u"),
+	@NamedQuery(name="Usuario.findById", query="SELECT u FROM Usuario u where u.correousr like :correo")
+	})
 public class Usuario implements Serializable {
 	private static final long serialVersionUID = 1L;
 

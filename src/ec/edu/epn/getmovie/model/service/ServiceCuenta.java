@@ -57,7 +57,21 @@ public class ServiceCuenta {
 		EntityManager em = emf.createEntityManager();
 
 		Usuario u = em.getReference(Usuario.class, email);
+		em.getTransaction().begin();
 		em.remove(u);
+		em.getTransaction().commit();
+		em.close();
+	}
+	
+	public void modificarUsuario(Usuario usuarioModificar) {
+		EntityManager em = emf.createEntityManager();
+		Usuario u = em.getReference(Usuario.class, usuarioModificar.getCorreousr());
+		u.setNombreusr(usuarioModificar.getNombreusr());
+		u.setClaveusr(usuarioModificar.getClaveusr());
+		
+		em.getTransaction().begin();
+		em.persist(u);
+		em.getTransaction().commit();
 		em.close();
 	}
 }

@@ -15,6 +15,11 @@ if (usuario != null){
 %>
 
 <section class="container">
+	<ul class="breadcrumb">
+		<li><a href="${pageContext.request.contextPath}/vistas/home.jsp">Home</a>
+		<li><a href="${pageContext.request.contextPath}/vistas/cuenta/home.jsp">Cuenta</a></li>
+  		<li class="active">Info</li>
+	</ul>
 	<div class="row">
 		<div class="col-lg-9">
 			<form class="form-horizontal">

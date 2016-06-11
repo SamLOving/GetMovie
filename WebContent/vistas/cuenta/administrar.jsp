@@ -8,9 +8,14 @@ Collection<Usuario> listaUsuario = (Collection<Usuario>) request.getAttribute("l
 <jsp:include page="/templates/header.jsp"></jsp:include>
 
 <section class="container">
+	<ul class="breadcrumb">
+		<li><a href="${pageContext.request.contextPath}/vistas/home.jsp">Home</a>
+		<li><a href="${pageContext.request.contextPath}/vistas/cuenta/home.jsp">Cuenta</a></li>
+  		<li class="active">Administrar</li>
+	</ul>
 	<div class="row">
 		<div class="col-lg-9">
-			<form class="form-horizontal" id="loginForm">
+			<form class="form-horizontal" id="loginForm" action="${pageContext.request.contextPath}/cuenta/administrar">
 				<fieldset>
 					<legend>Administraci&oacute;n de Usuarios</legend>
 					<div>
@@ -34,7 +39,8 @@ Collection<Usuario> listaUsuario = (Collection<Usuario>) request.getAttribute("l
 						<table class="table table-striped table-hover ">
 							<thead>
 								<tr>
-									<th class="col-xs-11">Email</th>
+									<th class="col-xs-5">Nombre de Usuario</th>
+									<th class="col-xs-6">Email</th>
 									<th class="col-xs-1">Acci&oacute;n</th>
 								</tr>
 							</thead>
@@ -46,6 +52,7 @@ Collection<Usuario> listaUsuario = (Collection<Usuario>) request.getAttribute("l
 							
 							<tbody>
 								<tr>
+									<td><%=u.getNombreusr()%></td>
 									<td><%=u.getCorreousr()%></td>
 									<td>
 										<form method="get"

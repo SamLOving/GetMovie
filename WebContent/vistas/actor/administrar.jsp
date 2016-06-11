@@ -3,7 +3,7 @@
     
 <jsp:include page="/templates/header.jsp"></jsp:include>
 <section class="container">
-<ul class="breadcrumb">
+	<ul class="breadcrumb">
 		<li><a href="${pageContext.request.contextPath}/vistas/home.jsp">Home</a>
 		<li><a href="${pageContext.request.contextPath}/vistas/actor/home.jsp">Actor</a></li>
   		<li class="active">Administrar</li>

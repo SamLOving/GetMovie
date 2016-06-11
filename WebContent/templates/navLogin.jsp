@@ -17,20 +17,20 @@
 			id="bs-example-navbar-collapse-2">
 			<ul class="nav navbar-nav">
 				<li><a
-					href="${pageContext.request.contextPath}/vistas/pelicula/home.jsp">Pel&iacute;cula
+					href="${pageContext.request.contextPath}/pelicula/home">Pel&iacute;cula
 						<span class="sr-only">(current)</span>
 				</a></li>
 				<li><a
-					href="${pageContext.request.contextPath}/vistas/genero/HomeGenero.jsp">G&eacute;nero
+					href="${pageContext.request.contextPath}/genero/home">G&eacute;nero
 				</a></li>
 				<li><a
-					href="${pageContext.request.contextPath}/vistas/actor/home.jsp">Actor
+					href="${pageContext.request.contextPath}/actor/home">Actor
 				</a></li>
 				<li><a
-					href="${pageContext.request.contextPath}/vistas/director/home.jsp">Director
+					href="${pageContext.request.contextPath}/director/home">Director
 				</a></li>
 				<li><a
-					href="${pageContext.request.contextPath}/vistas/productora/HomeProductora.jsp">Productora
+					href="${pageContext.request.contextPath}/productora/home">Productora
 				</a></li>
 			</ul>
 			<ul class="nav navbar-nav navbar-right">

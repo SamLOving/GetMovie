@@ -1,8 +1,11 @@
-*==============================================================*/
+/*==============================================================*/
 /* DBMS name:      MySQL 5.0                                    */
 /* Created on:     29/05/2016 16:59:44                          */
 /*==============================================================*/
 
+drop table if exists PELICULA;
+
+drop table if exists USUARIO;
 
 drop table if exists ACTOR;
 
@@ -10,11 +13,7 @@ drop table if exists DIRECTOR;
 
 drop table if exists GENERO;
 
-drop table if exists PELICULA;
-
 drop table if exists PRODUCTORA;
-
-drop table if exists USUARIO;
 
 /*==============================================================*/
 /* Table: ACTOR                                                 */

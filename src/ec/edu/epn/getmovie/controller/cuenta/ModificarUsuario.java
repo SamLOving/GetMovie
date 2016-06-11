@@ -55,7 +55,45 @@ public class ModificarUsuario extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		doGet(request, response);
+		Usuario usr = (Usuario) request.getSession().getAttribute("usuarioActivo");
+
+		if (usr == null) {
+			getServletConfig().getServletContext().getRequestDispatcher("/home").forward(request, response);
+		} else {
+			ServiceCuenta sc = new ServiceCuenta();
+			Usuario usuarioModificador = new Usuario();
+			
+			String nombre = (String) request.getParameter("username");
+			String email = (String) request.getParameter("email");
+			String clave = (String) request.getParameter("password");
+			String confirmarClave = (String) request.getParameter("confirmPassword");
+			
+			if (nombre == null || clave == null || confirmarClave == null) {
+				getServletConfig().getServletContext().getRequestDispatcher("/vistas/cuenta/modificar.jsp").forward(request,
+						response);
+			} else if (!clave.equals(confirmarClave)) {
+				getServletConfig().getServletContext().getRequestDispatcher("/vistas/cuenta/modificar.jsp").forward(request,
+						response);
+			}else {
+				usuarioModificador.setNombreusr(nombre);
+				usuarioModificador.setCorreousr(email);
+				usuarioModificador.setClaveusr(clave);
+				usuarioModificador.setEstadousr((byte) 0);
+				usuarioModificador.setIsadmin((byte) 0);
+				
+				sc.modificarUsuario(usuarioModificador);
+				
+				if (usr.getIsadmin() == (byte) 1){
+					getServletConfig().getServletContext().getRequestDispatcher("/cuenta/administrar").forward(request,
+						response);
+				} else {
+					usr.setNombreusr(nombre);
+					request.getSession().setAttribute("usuarioActivo", usr);
+					getServletConfig().getServletContext().getRequestDispatcher("/cuenta/home").forward(request,
+							response);
+				}
+			}	
+		}
 	}
 
 }

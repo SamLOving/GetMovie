@@ -1,29 +1,28 @@
 package ec.edu.epn.getmovie.controller.pelicula;
 
 import java.io.IOException;
-import java.util.Collection;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import ec.edu.epn.getmovie.complementos.Imagen;
 import ec.edu.epn.getmovie.model.Pelicula;
 import ec.edu.epn.getmovie.model.Usuario;
-import ec.edu.epn.getmovie.model.service.pelicula.*;
+import ec.edu.epn.getmovie.model.service.pelicula.ServicePelicula;
 
 /**
- * Servlet implementation class AdministrarPelicula
+ * Servlet implementation class InfoPelicula
  */
-@WebServlet("/pelicula/administrar")
-public class AdministrarPelicula extends HttpServlet {
+@WebServlet("/pelicula/info")
+public class InfoPelicula extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public AdministrarPelicula() {
+    public InfoPelicula() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -33,23 +32,7 @@ public class AdministrarPelicula extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		Usuario usr = (Usuario) request.getSession().getAttribute("usuarioActivo");
-
-		if (usr == null) {
-			getServletConfig().getServletContext().getRequestDispatcher("/home").forward(request, response);
-		} else {
-			ServicePelicula sp = new ServicePelicula();
-			String nombre = request.getParameter("nombre");
-			
-			if (nombre == null)
-				nombre = "";
-			
-			Collection<Pelicula> listaPelicula = sp.listarPelicula(nombre);
-			request.setAttribute("listaPelicula", listaPelicula);
-			
-			getServletConfig().getServletContext().getRequestDispatcher("/vistas/pelicula/administrar.jsp")
-					.forward(request, response);
-		}
+		doPost(request, response);
 	}
 
 	/**
@@ -57,7 +40,23 @@ public class AdministrarPelicula extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		doGet(request, response);
+Usuario usr = (Usuario) request.getSession().getAttribute("usuarioActivo");
+		
+		if (usr == null) {
+			getServletConfig().getServletContext().getRequestDispatcher("/home").forward(request, response);
+		} else {
+			ServicePelicula sp = new ServicePelicula();
+			String peliculaInfo = (String) request.getParameter("peliculaInfo");
+			
+			int idPelicula = 0;
+			if (peliculaInfo != null)
+				idPelicula = Integer.parseInt(peliculaInfo);
+				
+			Pelicula pelicula = sp.buscarPelicula(idPelicula);
+			request.setAttribute("pelicula", pelicula);
+			getServletConfig().getServletContext().getRequestDispatcher("/vistas/pelicula/info.jsp").forward(request,
+					response);
+		}
 	}
 
 }

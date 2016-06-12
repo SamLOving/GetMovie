@@ -1,4 +1,4 @@
-package ec.edu.epn.getmovie.service.pelicula;
+package ec.edu.epn.getmovie.model.service.pelicula;
 
 import java.util.Collection;
 

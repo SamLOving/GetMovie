@@ -22,8 +22,8 @@ public class Imagen {
 	}
 
 	public void eliminarDirectorio(int id, boolean eliminarDirectorio) {
-		System.out.println("eliminar directorio" + id);
-		File directorio = new File(pathPeliculas + id);
+		System.out.println("eliminar directorio " + id);
+		File directorio = new File(pathPeliculas + "/" + id);
 
 		if (directorio.exists()) {
 			if (directorio.delete() && eliminarDirectorio == true)
@@ -94,7 +94,7 @@ public class Imagen {
 
 					}
 
-					String path = pathImages + "/" + fileName;
+					String path = pathImages + "/" + id + "/" + fileName;
 					return path;
 				}
 				return null;

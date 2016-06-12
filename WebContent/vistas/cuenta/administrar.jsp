@@ -15,7 +15,8 @@ Collection<Usuario> listaUsuario = (Collection<Usuario>) request.getAttribute("l
 	</ul>
 	<div class="row">
 		<div class="col-lg-9">
-			<form class="form-horizontal" id="loginForm" action="${pageContext.request.contextPath}/cuenta/administrar">
+			<form class="form-horizontal" id="loginForm" 
+				action="${pageContext.request.contextPath}/cuenta/administrar">
 				<fieldset>
 					<legend>Administraci&oacute;n de Usuarios</legend>
 					<div>

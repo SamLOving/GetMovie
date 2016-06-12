@@ -1,11 +1,16 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
+<%@ page import="java.util.*, ec.edu.epn.getmovie.model.*" %>
 <jsp:include page="/templates/header.jsp"></jsp:include>
+<%
+Collection<Pelicula> listaPelicula = (Collection<Pelicula>) request.getAttribute("listaPelicula");
+%>
 
 <section class="container">
 	<div class="row">
 		<div class="col-lg-9">
-			<form class="form-horizontal" id="loginForm">
+			<form class="form-horizontal" id="loginForm" method="get" 
+				action="${pageContext.request.contextPath}/pelicula/administrar">
 				<fieldset>
 					<legend>Administración de Pel&iacute;culas</legend>
 					<div>
@@ -47,93 +52,47 @@
 									<th class="col-xs-1">Acci&oacute;n</th>
 								</tr>
 							</thead>
-
+							<%
+							try {
+								for (Pelicula p : listaPelicula){
+							
+							%>
 							<tbody>
 								<tr>
-									<td><img alt="Portada 1" class="img-portada"
-										src="${pageContext.request.contextPath}/images/peliculas/luna de miel en familia.jpg"></td>
-									<td>Luna de miel en familia</td>
+									<td><img alt="Portada de la película <%=p.getNombrepelicula()%>" class="img-portada"
+										src="<%=p.getFotopelicula()%>"></td>
+									<td><%=p.getNombrepelicula() %></td>
 									<td>
 										<form method="get" class="btnclass"
-											action="${pageContext.request.contextPath}/vistas/pelicula/modificar.jsp">
-											<button type="submit" class="btn btn-default" value=""
+											action="${pageContext.request.contextPath}/pelicula/modificar">
+											<button type="submit" class="btn btn-default" value="<%=p.getIdpelicula()%>"
 												name="peliculaModificar">
 												<span class="material-icons md-16">&#xE150;</span>
 											</button>
 										</form>
 										<form method="post" class="btnclass"
-											action="${pageContext.request.contextPath}/vistas/pelicula/home.jsp">
-											<button type="submit" class="btn btn-default" value=""
+											action="${pageContext.request.contextPath}/pelicula/eliminar">
+											<button type="submit" class="btn btn-default" value="<%=p.getIdpelicula()%>"
 												name="peliculaEliminar">
 												<i class="material-icons md-16">&#xE872;</i>
 											</button>
 										</form>
 										<form method="post" class="btnclass"
-											action="${pageContext.request.contextPath}/vistas/pelicula/info.jsp">
-											<button type="submit" class="btn btn-default" value=""
-												name="peliculaEliminar">
-												<i class="material-icons">&#xE8F4;</i>
-											</button>
-										</form>
-									</td>
-								</tr>
-								<tr>
-									<td><img alt="Portada 1" class="img-portada"
-										src="${pageContext.request.contextPath}/images/peliculas/piratas del caribe.jpg"></td>
-									<td>Piratas del Caribe</td>
-									<td>
-										<form method="get" class="btnclass"
-											action="${pageContext.request.contextPath}/vistas/pelicula/modificar.jsp">
-											<button type="submit" class="btn btn-default" value=""
-												name="peliculaModificar">
-												<span class="material-icons md-16">&#xE150;</span>
-											</button>
-										</form>
-										<form method="post" class="btnclass"
-											action="${pageContext.request.contextPath}/vistas/pelicula/home.jsp">
-											<button type="submit" class="btn btn-default" value=""
-												name="peliculaEliminar">
-												<i class="material-icons md-16">&#xE872;</i>
-											</button>
-										</form>
-										<form method="post" class="btnclass"
-											action="${pageContext.request.contextPath}/vistas/pelicula/info.jsp">
-											<button type="submit" class="btn btn-default" value=""
-												name="peliculaEliminar">
-												<i class="material-icons">&#xE8F4;</i>
-											</button>
-										</form>
-									</td>
-								</tr>
-								<tr>
-									<td><img alt="Portada de la película ..." class="img-portada"
-										src="${pageContext.request.contextPath}/images/peliculas/orgullo y prejuicio.jpeg"></td>
-									<td>Orgullo y Prejuicio</td>
-									<td>
-										<form method="get" class="btnclass"
-											action="${pageContext.request.contextPath}/vistas/pelicula/modificar.jsp">
-											<button type="submit" class="btn btn-default" value=""
-												name="peliculaModificar">
-												<span class="material-icons md-16">&#xE150;</span>
-											</button>
-										</form>
-										<form method="post" class="btnclass"
-											action="${pageContext.request.contextPath}/vistas/pelicula/home.jsp">
-											<button type="submit" class="btn btn-default" value=""
-												name="peliculaEliminar">
-												<i class="material-icons md-16">&#xE872;</i>
-											</button>
-										</form>
-										<form method="post" class="btnclass"
-											action="${pageContext.request.contextPath}/vistas/pelicula/info.jsp">
-											<button type="submit" class="btn btn-default" value=""
-												name="peliculaVer">
+											action="${pageContext.request.contextPath}/pelicula/info">
+											<button type="submit" class="btn btn-default" value="<%=p.getIdpelicula()%>"
+												name="peliculaInfo">
 												<i class="material-icons">&#xE8F4;</i>
 											</button>
 										</form>
 									</td>
 								</tr>
 							</tbody>
+							<%
+								}
+							} catch (Exception e) {
+								System.out.println("Error al listar peliculas");
+							}
+							%>
 						</table>
 					</div>
 				</div>

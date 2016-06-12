@@ -20,8 +20,8 @@ import ec.edu.epn.getmovie.model.Productora;
 import ec.edu.epn.getmovie.model.Usuario;
 import ec.edu.epn.getmovie.model.service.actor.ServiceActor;
 import ec.edu.epn.getmovie.model.service.director.ServiceDirector;
+import ec.edu.epn.getmovie.model.service.pelicula.ServicePelicula;
 import ec.edu.epn.getmovie.service.genero.ServiceGenero;
-import ec.edu.epn.getmovie.service.pelicula.ServicePelicula;
 import ec.edu.epn.getmovie.service.productora.ServiceProductora;
 
 /**
@@ -160,5 +160,6 @@ public class RegistrarPelicula extends HttpServlet {
 			}
 		}
 	}
+
 
 }

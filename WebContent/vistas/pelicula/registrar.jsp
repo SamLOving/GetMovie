@@ -22,10 +22,10 @@ Collection<Productora> listaProductora = (Collection<Productora>) request.getAtt
 						<div class="form-group">
 							<label for="inputPassword" class="control-label">Portada</label>
 							<div>
-								<input type="image" id="image" style="text-align: center;"
+								<input type="image" id="image"
 									class="btn btn-upload img-responsive2"
 									src="${pageContext.request.contextPath}/images/uploadImage.png"
-									alt="Imagen de la prenda"><input type="file"
+									alt="Imagen de la película"><input type="file"
 									id="inputFile" name="inputFile" onchange="readURL(this);"
 									accept="image/*">
 								<p class="help-block">Portada de la pel&iacute;cula</p>

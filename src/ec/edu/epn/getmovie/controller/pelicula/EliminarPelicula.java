@@ -7,6 +7,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import ec.edu.epn.getmovie.complementos.Imagen;
+import ec.edu.epn.getmovie.model.Usuario;
+import ec.edu.epn.getmovie.model.service.pelicula.ServicePelicula;
+
 /**
  * Servlet implementation class EliminarPelicula
  */
@@ -27,7 +31,7 @@ public class EliminarPelicula extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		doPost(request, response);
 	}
 
 	/**
@@ -35,7 +39,24 @@ public class EliminarPelicula extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		doGet(request, response);
+		Usuario usr = (Usuario) request.getSession().getAttribute("usuarioActivo");
+		
+		if (usr == null) {
+			getServletConfig().getServletContext().getRequestDispatcher("/home").forward(request, response);
+		} else {
+			ServicePelicula sp = new ServicePelicula();
+			String peliculaEliminar = (String) request.getParameter("peliculaEliminar");
+			
+			int idPelicula = 0;
+			if (peliculaEliminar != null)
+				idPelicula = Integer.parseInt(peliculaEliminar);
+				
+			sp.eliminarPelicula(idPelicula);
+			Imagen img = new Imagen();
+			img.eliminarDirectorio(idPelicula, true);
+			getServletConfig().getServletContext().getRequestDispatcher("/pelicula/administrar").forward(request,
+					response);
+		}
 	}
 
 }

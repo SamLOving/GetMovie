@@ -15,7 +15,7 @@ import java.util.Date;
 @Table(name = "PELICULA")
 @NamedQueries({
 	@NamedQuery(name="Pelicula.findAll", query="SELECT p FROM Pelicula p"),
-	@NamedQuery(name="Pelicula.findByNombre", query="SELECT p FROM Pelicula p where p.nombrepelicula like :nombrepelicula")
+	@NamedQuery(name="Pelicula.findByNombre", query="SELECT p FROM Pelicula p where p.nombrepelicula like :nombrepelicula order by p.nombrepelicula")
 	})
 public class Pelicula implements Serializable {
 	private static final long serialVersionUID = 1L;

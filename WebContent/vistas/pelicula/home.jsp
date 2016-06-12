@@ -3,18 +3,20 @@
 <jsp:include page="/templates/header.jsp"></jsp:include>
 
 <section class="container">
+	<ul class="breadcrumb">
+		<li><a href="${pageContext.request.contextPath}/vistas/home.jsp">Home</a>
+  		<li class="active">Pel&iacute;cula</li>
+	</ul>
 	<div class="row">
 		<div class="col-lg-9">
-			<a
-				href="${pageContext.request.contextPath}/vistas/pelicula/registrar.jsp"
-				class="btn btn-default btn-lg btn-block">Registrar</a> <a
-				href="${pageContext.request.contextPath}/vistas/pelicula/administrar.jsp"
-				class="btn btn-default btn-lg btn-block">Administrar</a> <a
-				href="${pageContext.request.contextPath}/vistas/pelicula/puntuar.jsp"
-				class="btn btn-default btn-lg btn-block">Puntuar</a> <a
-				href="${pageContext.request.contextPath}/vistas/pelicula/recomendacion.jsp"
+			<a href="${pageContext.request.contextPath}/pelicula/registrar"
+				class="btn btn-default btn-lg btn-block">Registrar</a> 
+			<a href="${pageContext.request.contextPath}/pelicula/administrar"
+				class="btn btn-default btn-lg btn-block">Administrar</a> 
+			<a href="${pageContext.request.contextPath}/pelicula/puntuar"
+				class="btn btn-default btn-lg btn-block">Puntuar</a> 
+			<a href="${pageContext.request.contextPath}/pelicula/recomendacion"
 				class="btn btn-default btn-lg btn-block">Obtener Recomendaci&oacute;n</a>
-				
 		</div>
 		<div>
 			<div class="col-lg-3">

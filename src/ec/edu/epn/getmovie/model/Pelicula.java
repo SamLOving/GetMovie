@@ -13,7 +13,10 @@ import java.util.Date;
  */
 @Entity
 @Table(name = "PELICULA")
-@NamedQuery(name="Pelicula.findAll", query="SELECT p FROM Pelicula p")
+@NamedQueries({
+	@NamedQuery(name="Pelicula.findAll", query="SELECT p FROM Pelicula p"),
+	@NamedQuery(name="Pelicula.findByNombre", query="SELECT p FROM Pelicula p where p.nombrepelicula like :nombrepelicula")
+	})
 public class Pelicula implements Serializable {
 	private static final long serialVersionUID = 1L;
 
@@ -148,4 +151,11 @@ public class Pelicula implements Serializable {
 		this.productora = productora;
 	}
 
+	@Override
+	public String toString() {
+		return "Pelicula [idpelicula=" + idpelicula + ", fotopelicula=" + fotopelicula + ", lanzamientopelicula="
+				+ lanzamientopelicula + ", nombrepelicula=" + nombrepelicula + ", ratingpelicula=" + ratingpelicula
+				+ ", sinopsispelicula=" + sinopsispelicula + ", actor=" + actor + ", director=" + director + ", genero="
+				+ genero + ", usuario=" + usuario + ", productora=" + productora + "]";
+	}
 }

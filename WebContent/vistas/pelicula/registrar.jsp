@@ -18,21 +18,23 @@ Collection<Productora> listaProductora = (Collection<Productora>) request.getAtt
 				action="${pageContext.request.contextPath}/pelicula/registrar">
 				<fieldset>
 					<legend>Registro de Pel&iacute;cula</legend>
-					<div class="col-lg-4">
+					<div class="col-lg-3">
 						<div class="form-group">
-							<label for="inputPassword" class="control-label">Portada</label>
-							<div>
-								<input type="image" id="image"
-									class="btn btn-upload img-responsive2"
-									src="${pageContext.request.contextPath}/images/uploadImage.png"
-									alt="Imagen de la película"><input type="file"
+							<label class="control-label">Portada</label>
+							<div class="image-upload">
+								<label for="inputFile">
+									<img id="image" class="btn btn-upload img-responsive2"
+										src="${pageContext.request.contextPath}/images/uploadImage.png"
+										alt="Portada de la película">
+								</label>
+								<p class="help-block">Suba la Portada de la pel&iacute;cula</p>
+								<input type="file"
 									id="inputFile" name="inputFile" onchange="readURL(this);"
-									accept="image/*">
-								<p class="help-block">Portada de la pel&iacute;cula</p>
+									accept="image/*" class="form-control btn btn-default">
 							</div>
 						</div>
 					</div>
-					<div class="col-lg-8">
+					<div class="col-lg-9">
 						<div class="form-group">
 							<label for="inputName" class="col-lg-2 control-label">Nombre</label>
 							<div class="col-lg-10">
@@ -44,7 +46,7 @@ Collection<Productora> listaProductora = (Collection<Productora>) request.getAtt
 						</div>
 						<div class="form-group">
 							<label for="inputName" class="col-lg-2 control-label">G&eacute;nero</label>
-							<div class="col-lg-5">
+							<div class="col-lg-4">
 								<select class="form-control" id="genero" name="genero">
 								<%
 								try {
@@ -60,21 +62,9 @@ Collection<Productora> listaProductora = (Collection<Productora>) request.getAtt
 								</select>
 							</div>
 							<label for="inputName" class="col-lg-2 control-label">Año</label>
-							<div class="col-lg-3">
-								<select class="form-control" id="anio" name="anio">
-									<option selected value="0">2016</option>
-									<option value="1">2015</option>
-									<option value="2">2014</option>
-									<option value="3">2013</option>
-									<option value="4">2012</option>
-									<option value="5">2011</option>
-									<option value="6">2010</option>
-									<option value="7">2009</option>
-									<option value="8">2008</option>
-									<option value="9">2007</option>
-									<option value="10">2006</option>
-									<option value="11">2005</option>
-								</select>
+							<div class="col-lg-4">
+								<input type="month" class="form-control" name="anio" id="anio"
+								required="required">
 							</div>
 						</div>
 						<div class="form-group">

@@ -1,6 +1,8 @@
 package ec.edu.epn.getmovie.controller.pelicula;
 
 import java.io.IOException;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.Collection;
 import java.util.Date;
 
@@ -23,6 +25,7 @@ import ec.edu.epn.getmovie.model.service.director.ServiceDirector;
 import ec.edu.epn.getmovie.model.service.pelicula.ServicePelicula;
 import ec.edu.epn.getmovie.service.genero.ServiceGenero;
 import ec.edu.epn.getmovie.service.productora.ServiceProductora;
+import javafx.util.converter.DateStringConverter;
 
 /**
  * Servlet implementation class RegistrarPelicula
@@ -111,12 +114,13 @@ public class RegistrarPelicula extends HttpServlet {
 					Director director = sd.buscarDirector(Integer.parseInt(directorString));
 
 					java.math.BigDecimal rating = new java.math.BigDecimal(String.valueOf(0));
+					DateFormat format = new SimpleDateFormat();
 					
 					pelicula.setFotopelicula("subirFoto");
 					pelicula.setNombrepelicula(nombre);
 					pelicula.setGenero(genero);
 					pelicula.setProductora(productora);
-					pelicula.setLanzamientopelicula(new Date());
+					pelicula.setLanzamientopelicula(anio);
 					pelicula.setActor(actor);
 					pelicula.setDirector(director);
 					pelicula.setSinopsispelicula(sinopsis);

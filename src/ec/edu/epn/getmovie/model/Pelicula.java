@@ -15,7 +15,11 @@ import java.util.Date;
 @Table(name = "PELICULA")
 @NamedQueries({
 	@NamedQuery(name="Pelicula.findAll", query="SELECT p FROM Pelicula p"),
-	@NamedQuery(name="Pelicula.findByNombre", query="SELECT p FROM Pelicula p where p.nombrepelicula like :nombrepelicula order by p.nombrepelicula")
+	@NamedQuery(name="Pelicula.findByNombre", query="SELECT p FROM Pelicula p where p.nombrepelicula like :nombrepelicula order by p.nombrepelicula"),
+	@NamedQuery(name="Pelicula.findByActor", query="SELECT p FROM Pelicula p where p.actor = :actor"),
+	@NamedQuery(name="Pelicula.findByDirector", query="SELECT p FROM Pelicula p where p.director = :director"),
+	@NamedQuery(name="Pelicula.findByGenero", query="SELECT p FROM Pelicula p where p.genero = :genero"),
+	@NamedQuery(name="Pelicula.findByProductora", query="SELECT p FROM Pelicula p where p.productora = :productora")
 	})
 public class Pelicula implements Serializable {
 	private static final long serialVersionUID = 1L;
@@ -26,8 +30,7 @@ public class Pelicula implements Serializable {
 
 	private String fotopelicula;
 
-	@Temporal(TemporalType.DATE)
-	private Date lanzamientopelicula;
+	private String lanzamientopelicula;
 
 	private String nombrepelicula;
 
@@ -79,11 +82,11 @@ public class Pelicula implements Serializable {
 		this.fotopelicula = fotopelicula;
 	}
 
-	public Date getLanzamientopelicula() {
+	public String getLanzamientopelicula() {
 		return this.lanzamientopelicula;
 	}
 
-	public void setLanzamientopelicula(Date lanzamientopelicula) {
+	public void setLanzamientopelicula(String lanzamientopelicula) {
 		this.lanzamientopelicula = lanzamientopelicula;
 	}
 

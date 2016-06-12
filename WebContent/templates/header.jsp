@@ -26,6 +26,9 @@
 <script
 	src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 </head>
+<script src="http://code.jquery.com/jquery-1.10.2.js"
+    type="text/javascript"></script>
+<script src="${pageContext.request.contextPath}/js/app-ajax.js" type="text/javascript"></script>
 <body>
 	<header class="container">
 		<img class="logo"

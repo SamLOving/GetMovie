@@ -42,6 +42,10 @@ Pelicula p = (Pelicula) request.getAttribute("pelicula");
 						<label for="inputName" class="col-xs-8"><%=p.getProductora().getNombreproductora()%></label>
 					</div>
 					<div class="form-group col-lg-8">
+						<label class="col-xs-4 label-info1"><b>Lanzamiento</label>
+						<label for="inputName" class="col-xs-8"><%=p.getLanzamientopelicula()%></label>
+					</div>
+					<div class="form-group col-lg-8">
 						<label class="col-xs-4 label-info1"><b>Sin&oacute;psis</label>
 						<label for="inputName" class="col-xs-8"><%=p.getSinopsispelicula()%></label>
 					</div>

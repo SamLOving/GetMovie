@@ -4,12 +4,20 @@
 <jsp:include page="/templates/header.jsp"></jsp:include>
 <%
 Collection<Pelicula> listaPelicula = (Collection<Pelicula>) request.getAttribute("listaPelicula");
+
+String findby = (String) request.getAttribute("findBy");
+String nombre = (String) request.getAttribute("nombre");
+
+if (findby == null)
+	findby = "0";
+if (nombre == null)
+	nombre = "";
 %>
 
 <section class="container">
 	<div class="row">
 		<div class="col-lg-9">
-			<form class="form-horizontal" id="loginForm" method="get" 
+			<form class="form-horizontal" id="loginForm" method="post" 
 				action="${pageContext.request.contextPath}/pelicula/administrar">
 				<fieldset>
 					<legend>Administración de Pel&iacute;culas</legend>
@@ -18,20 +26,58 @@ Collection<Pelicula> listaPelicula = (Collection<Pelicula>) request.getAttribute
 							<label for="inputName" class="col-lg-2 control-label">Buscar
 								por</label>
 							<div class="col-lg-10">
-								<select class="form-control" id="select">
+								<select class="form-control" id="findBy" name="findBy">
+								<%
+								if ("0".equals(findby)) {
+								%>
 									<option selected value="0">Todos</option>
 									<option value="1">Actor</option>
 									<option value="2">Director</option>
 									<option value="3">Género</option>
 									<option value="4">Productora</option>
+								<%
+								} else if ("1".equals(findby)) {
+								%>
+									<option value="0">Todos</option>
+									<option selected value="1">Actor</option>
+									<option value="2">Director</option>
+									<option value="3">Género</option>
+									<option value="4">Productora</option>
+								<%
+								} else if ("2".equals(findby)) {
+								%>
+									<option value="0">Todos</option>
+									<option value="1">Actor</option>
+									<option selected value="2">Director</option>
+									<option value="3">Género</option>
+									<option value="4">Productora</option>
+								<%
+								} else if ("3".equals(findby)) {
+								%>
+									<option value="0">Todos</option>
+									<option value="1">Actor</option>
+									<option value="2">Director</option>
+									<option selected value="3">Género</option>
+									<option value="4">Productora</option>
+								<%
+								} else if ("4".equals(findby)) {
+								%>
+									<option value="0">Todos</option>
+									<option value="1">Actor</option>
+									<option value="2">Director</option>
+									<option value="3">Género</option>
+									<option selected value="4">Productora</option>
+								<%
+								}
+								%>
 								</select>
 							</div>
 						</div>
 						<div class="form-group">
-							<label for="inputName" class="col-lg-2 control-label">Filtro</label>
+							<label for="inputName" class="col-lg-2 control-label">Nombre</label>
 							<div class="col-lg-10">
-								<input type="text" class="form-control" id="inputName"
-									name="username" placeholder="Filtro">
+								<input type="text" class="form-control" id="nombre"
+									name="nombre" placeholder="Nombre" value="<%=nombre%>">
 							</div>
 						</div>
 						<div>
@@ -41,9 +87,23 @@ Collection<Pelicula> listaPelicula = (Collection<Pelicula>) request.getAttribute
 					</div>
 				</fieldset>
 			</form>
+			
+			<!--
+			<form>
+		        Enter Your Name: <input type="text" id="userName" />
+		    </form>
+		    <br>
+		    <br>
+		    <strong>Ajax Response</strong>:
+		    <div id="ajaxGetUserServletResponse"></div>
+		    -->
+		    
 			<div class="formclass">
 				<div class="row">
 					<div class="col-xs-12">
+						<%
+						try {
+						%>
 						<table class="table table-striped table-hover ">
 							<thead>
 								<tr>
@@ -53,9 +113,7 @@ Collection<Pelicula> listaPelicula = (Collection<Pelicula>) request.getAttribute
 								</tr>
 							</thead>
 							<%
-							try {
-								for (Pelicula p : listaPelicula){
-							
+								for (Pelicula p : listaPelicula) {
 							%>
 							<tbody>
 								<tr>

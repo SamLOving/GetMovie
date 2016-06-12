@@ -57,6 +57,31 @@ public class Imagen {
 		}
 		return null;
 	}
+	
+	public boolean imagenLlena (HttpServletRequest request, String inputFile){
+		Part filePart;
+		try {
+			filePart = request.getPart(inputFile);
+			System.out.println(filePart);
+			if (filePart != null) {
+				final String fileName = getFileName(filePart);
+				if (fileName != null && fileName.equals("") == false) {
+					return true;
+				} else {
+					return false;
+				}
+			} else
+				return false;
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return false;
+		} catch (ServletException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return false;
+		}
+	}
 
 	public String subirImagen(HttpServletRequest request, String inputFile, int id) {
 		Part filePart;

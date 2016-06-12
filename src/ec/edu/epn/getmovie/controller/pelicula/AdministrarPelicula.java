@@ -37,16 +37,7 @@ public class AdministrarPelicula extends HttpServlet {
 
 		if (usr == null) {
 			getServletConfig().getServletContext().getRequestDispatcher("/home").forward(request, response);
-		} else {
-			ServicePelicula sp = new ServicePelicula();
-			String nombre = request.getParameter("nombre");
-			
-			if (nombre == null)
-				nombre = "";
-			
-			Collection<Pelicula> listaPelicula = sp.listarPelicula(nombre);
-			request.setAttribute("listaPelicula", listaPelicula);
-			
+		} else {	
 			getServletConfig().getServletContext().getRequestDispatcher("/vistas/pelicula/administrar.jsp")
 					.forward(request, response);
 		}
@@ -57,7 +48,29 @@ public class AdministrarPelicula extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		doGet(request, response);
+		Usuario usr = (Usuario) request.getSession().getAttribute("usuarioActivo");
+
+		if (usr == null) {
+			getServletConfig().getServletContext().getRequestDispatcher("/home").forward(request, response);
+		} else {
+			ServicePelicula sp = new ServicePelicula();
+			String nombre = request.getParameter("nombre");
+			String findBy = request.getParameter("findBy");
+			
+			if (nombre == null)
+				nombre = "";
+			if (findBy == null)
+				nombre = "";
+			
+			Collection<Pelicula> listaPelicula = sp.listarPelicula(nombre, findBy);
+			request.setAttribute("listaPelicula", listaPelicula);
+			
+			request.setAttribute("findBy", findBy);
+			request.setAttribute("nombre", nombre);
+			
+			getServletConfig().getServletContext().getRequestDispatcher("/vistas/pelicula/administrar.jsp")
+					.forward(request, response);
+		}
 	}
 
 }

@@ -63,7 +63,8 @@ public class RecomendacionPelicula extends HttpServlet {
 				nombre = "";
 			
 			Collection<Pelicula> listaPelicula = sp.listarPelicula(nombre, findBy);
-			request.setAttribute("listaPelicula", listaPelicula);
+			Collection<Pelicula> listaRecomendacion = sp.listarRecomendacion(listaPelicula);
+			request.setAttribute("listaPelicula", listaRecomendacion);
 			
 			request.setAttribute("findBy", findBy);
 			request.setAttribute("nombre", nombre);

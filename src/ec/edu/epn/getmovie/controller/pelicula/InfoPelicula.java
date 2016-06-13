@@ -1,6 +1,9 @@
 package ec.edu.epn.getmovie.controller.pelicula;
 
 import java.io.IOException;
+import java.util.Collection;
+import java.util.List;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -40,22 +43,41 @@ public class InfoPelicula extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-Usuario usr = (Usuario) request.getSession().getAttribute("usuarioActivo");
+		Usuario usr = (Usuario) request.getSession().getAttribute("usuarioActivo");
 		
 		if (usr == null) {
 			getServletConfig().getServletContext().getRequestDispatcher("/home").forward(request, response);
 		} else {
 			ServicePelicula sp = new ServicePelicula();
 			String peliculaInfo = (String) request.getParameter("peliculaInfo");
+			String pInfo = (String) request.getParameter("pInfo");
 			
 			int idPelicula = 0;
-			if (peliculaInfo != null)
+			if (peliculaInfo != null){
 				idPelicula = Integer.parseInt(peliculaInfo);
-				
-			Pelicula pelicula = sp.buscarPelicula(idPelicula);
-			request.setAttribute("pelicula", pelicula);
-			getServletConfig().getServletContext().getRequestDispatcher("/vistas/pelicula/info.jsp").forward(request,
+				Pelicula pelicula = sp.buscarPelicula(idPelicula);
+				request.setAttribute("pelicula", pelicula);
+				getServletConfig().getServletContext().getRequestDispatcher("/vistas/pelicula/info.jsp").forward(request,
+						response);
+			}
+			else if (pInfo != null) {
+				try {
+				System.out.println(pInfo);
+				idPelicula = Integer.parseInt(pInfo);
+				Collection<Pelicula> listaPelicula = (Collection<Pelicula>) request.getSession().getAttribute("listaPelicula");
+				List<Pelicula> listaP = (List<Pelicula>) listaPelicula;
+				Pelicula pelicula = listaP.get(idPelicula);
+				request.setAttribute("pelicula", pelicula);
+				getServletConfig().getServletContext().getRequestDispatcher("/vistas/pelicula/info.jsp").forward(request,
+						response);
+				} catch (Exception e) {
+					getServletConfig().getServletContext().getRequestDispatcher("/home").forward(request,
+							response);
+				}
+			} else {
+				getServletConfig().getServletContext().getRequestDispatcher("/home").forward(request,
 					response);
+			}
 		}
 	}
 

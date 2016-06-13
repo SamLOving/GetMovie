@@ -22,19 +22,16 @@ Usuario usuario = (Usuario) request.getSession().getAttribute("usuarioActivo");
 			<%
 			} else {
 			%>
-			<br>
 			<form method="get" action="${pageContext.request.contextPath}/cuenta/modificar">
-				<button class="btn btn-default btn-lg btn-block" 
+				<button class="buttonsHome btn btn-default btn-lg btn-block" 
 				name="usuarioModificar" value="<%=usuario.getCorreousr()%>">Modificar Cuenta</button>
 			</form>
-			<br>
 			<form method="get" action="${pageContext.request.contextPath}/cuenta/eliminar">
-				<button class="btn btn-default btn-lg btn-block" 
+				<button class="buttonsHome btn btn-default btn-lg btn-block" 
 				name="usuarioEliminar" value="<%=usuario.getCorreousr()%>">Eliminar Cuenta</button>
 			</form>
-			<br>
 			<%} %>
-			<a href="${pageContext.request.contextPath}/cuenta/cerrarsesion" class="btn btn-default btn-lg btn-block">Cerrar sesión</a>
+			<a href="${pageContext.request.contextPath}/cuenta/cerrarsesion" class="buttonsHome btn btn-default btn-lg btn-block">Cerrar sesión</a>
 		</div>
 		<div>
 			<div class="col-lg-3">

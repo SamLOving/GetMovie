@@ -14,16 +14,16 @@ import ec.edu.epn.getmovie.model.Usuario;
 import ec.edu.epn.getmovie.model.service.pelicula.ServicePelicula;
 
 /**
- * Servlet implementation class PuntuarPelicula
+ * Servlet implementation class RecomendacionPelicula
  */
-@WebServlet("/pelicula/puntuar")
-public class PuntuarPelicula extends HttpServlet {
+@WebServlet("/pelicula/recomendacion")
+public class RecomendacionPelicula extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public PuntuarPelicula() {
+    public RecomendacionPelicula() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -38,7 +38,7 @@ public class PuntuarPelicula extends HttpServlet {
 		if (usr == null) {
 			getServletConfig().getServletContext().getRequestDispatcher("/home").forward(request, response);
 		} else {	
-			getServletConfig().getServletContext().getRequestDispatcher("/vistas/pelicula/puntuar.jsp")
+			getServletConfig().getServletContext().getRequestDispatcher("/vistas/pelicula/recomendacion.jsp")
 					.forward(request, response);
 		}
 	}
@@ -63,12 +63,12 @@ public class PuntuarPelicula extends HttpServlet {
 				nombre = "";
 			
 			Collection<Pelicula> listaPelicula = sp.listarPelicula(nombre, findBy);
-			request.getSession().setAttribute("listaPelicula", listaPelicula);
+			request.setAttribute("listaPelicula", listaPelicula);
 			
 			request.setAttribute("findBy", findBy);
 			request.setAttribute("nombre", nombre);
 			
-			getServletConfig().getServletContext().getRequestDispatcher("/vistas/pelicula/puntuar.jsp")
+			getServletConfig().getServletContext().getRequestDispatcher("/vistas/pelicula/recomendacion.jsp")
 					.forward(request, response);
 		}
 	}

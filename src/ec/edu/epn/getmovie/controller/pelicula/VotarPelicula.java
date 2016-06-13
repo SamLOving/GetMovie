@@ -65,7 +65,7 @@ public class VotarPelicula extends HttpServlet {
 					}
 					
 					pelicula.setRatingpelicula(rating);
-					sp.modificarPelicula(pelicula);
+					sp.puntuarPelicula(pelicula);
 					
 					response.setContentType("text/plain");
 			        response.getWriter().write("Rating acutal: " + rating);	

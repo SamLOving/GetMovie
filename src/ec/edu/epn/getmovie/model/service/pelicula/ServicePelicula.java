@@ -114,6 +114,36 @@ public class ServicePelicula {
 		em.close();
 	}
 	
+	public Collection<Pelicula> listarRecomendacion (Collection<Pelicula> listaPelicula) {
+		List<Pelicula> listaAux = (List<Pelicula>) listaPelicula;
+		
+		int indexAnterior = 0;
+		for (int i=1; i< listaAux.size(); i++) {
+			Pelicula pActual = listaAux.get(i);
+			indexAnterior = i - 1;
+			while ((indexAnterior >= 0) 
+					&& (pActual.getRatingpelicula().doubleValue() 
+							> listaAux.get(indexAnterior).getRatingpelicula().doubleValue())){
+				listaAux.set(indexAnterior + 1, listaAux.get(indexAnterior));
+				indexAnterior --;
+			}
+			listaAux.set(indexAnterior + 1, pActual);
+		}
+		
+		return listaAux;
+	}
+	
+	public void puntuarPelicula (Pelicula pelicula) {
+		EntityManager em = emf.createEntityManager();
+		Pelicula p = em.getReference(Pelicula.class, pelicula.getIdpelicula());
+		p.setRatingpelicula(pelicula.getRatingpelicula());
+		
+		em.getTransaction().begin();
+		em.persist(p);
+		em.getTransaction().commit();
+		em.close();
+	}
+	
 	public void modificarPelicula (Pelicula peliculaModificar) {
 		EntityManager em = emf.createEntityManager();
 		Pelicula p = em.getReference(Pelicula.class, peliculaModificar.getIdpelicula());

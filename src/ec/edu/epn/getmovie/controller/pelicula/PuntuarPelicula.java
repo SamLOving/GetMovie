@@ -3,6 +3,7 @@ package ec.edu.epn.getmovie.controller.pelicula;
 import java.io.IOException;
 import java.util.Collection;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;

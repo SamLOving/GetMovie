@@ -17,8 +17,7 @@ if (nombre == null)
 <section class="container">
 	<div class="row">
 		<div class="col-lg-9">
-			<form class="form-horizontal" id="loginForm" method="post"
-				action="${pageContext.request.contextPath}/pelicula/puntuar">
+			<form class="form-horizontal" id="loginForm" method="post" action="puntuar">
 				<fieldset>
 					<legend>Puntuar de Pel&iacute;culas</legend>
 					<div>
@@ -80,8 +79,8 @@ if (nombre == null)
 							</div>
 						</div>
 						<div>
-							<button type="submit" class="btn btn-primary"
-								data-container="body" data-toggle="popover" data-placement="top">Buscar</button>
+							<input type="submit" class="btn btn-primary" value="Buscar"
+								data-container="body" data-toggle="popover" data-placement="top">
 						</div>
 					</div>
 				</fieldset>
@@ -90,11 +89,10 @@ if (nombre == null)
 			<div class="formclass">
 				<div class="row">
 					<div class="col-xs-12">
-						<%
-						if (listaPelicula != null) {
-							try {
-						%>
 						<div class="col-xs-9 col-md-9">
+						<%
+						try {
+						%>
 							<div class="col-lg-12">
 								<div id="myCarousel" class="carousel slide" data-ride="carousel" data-interval="false">
 								<!-- data-interval="false" -->
@@ -160,38 +158,33 @@ if (nombre == null)
 									</a>
 								</div>
 							</div>
+						<%
+						} catch (Exception e) {
+						
+						}%>
 						</div>
-						<div class="col-lg-3 col-md-3">
+						<div class="col-lg-3 col-md-3 col-center" align="center">
+							<form method="post" class="btnclass"
+								action="${pageContext.request.contextPath}/pelicula/info">
+								<button type="submit" class="btn btn-default" value="0"
+								name="pInfo" id="peliculaInfo">
+								<i class="material-icons">&#xE8F4;</i>
+							</button>
+							</form>
 							<div class="col-lg-12 col-center">
-								<form method="post" class="btnclass" action="${pageContext.request.contextPath}/pelicula/info">
-									<button type="submit" class="btn btn-default" value="0"
-										name="pInfo" id="peliculaInfo" title="Visualizar película">
-										<i class="material-icons">&#xE8F4;</i>
-									</button>
-								</form>
-							</div>
-							<div class="col-lg-12 col-center">
-								<label>Califica</label>
 								<div class="ec-stars-wrapper">
-									<a id="voto1" title="Votar con 1 estrellas"><i class="material-icons">&#xE838;</i></a>
-									<a id="voto2" title="Votar con 2 estrellas"><i class="material-icons">&#xE838;</i></a>
-									<a id="voto3" title="Votar con 3 estrellas"><i class="material-icons">&#xE838;</i></a>
-									<a id="voto4" title="Votar con 4 estrellas"><i class="material-icons">&#xE838;</i></a>
-									<a id="voto5" title="Votar con 5 estrellas"><i class="material-icons">&#xE838;</i></a>
+									<button type="submit" value="1" title="Votar con 1 estrellas">
+										<i class="material-icons">&#xE838;</i>
+									</button>
+									<a href="#" data-value="2" title="Votar con 2 estrellas"><i class="material-icons">&#xE838;</i></a>
+									<a href="#" data-value="3" title="Votar con 3 estrellas"><i class="material-icons">&#xE838;</i></a>
+									<a href="#" data-value="4" title="Votar con 4 estrellas"><i class="material-icons">&#xE838;</i></a>
+									<a href="#" data-value="5" title="Votar con 5 estrellas"><i class="material-icons">&#xE838;</i></a>
 								</div>
-				    			<div id="ajaxGetUserServletResponse"></div>
 								<noscript>Necesitas tener habilitado javascript para poder votar</noscript>
 							</div>
 						</div>
-						<%
-							} catch (Exception e) {
-							
-							}
-						}%>
 					</div>
-				    <input type="hidden" id="votacion" />
-				    <br>
-				    <br>
 				</div>
 			</div>
 		</div>

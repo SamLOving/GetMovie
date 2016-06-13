@@ -30,7 +30,7 @@ if (nombre == null)
 								<%
 								if ("0".equals(findby)) {
 								%>
-									<option selected value="0">Todos</option>
+									<option selected value="0">Pel&iacute;cula</option>
 									<option value="1">Actor</option>
 									<option value="2">Director</option>
 									<option value="3">Género</option>
@@ -38,7 +38,7 @@ if (nombre == null)
 								<%
 								} else if ("1".equals(findby)) {
 								%>
-									<option value="0">Todos</option>
+									<option value="0">Pel&iacute;cula</option>
 									<option selected value="1">Actor</option>
 									<option value="2">Director</option>
 									<option value="3">Género</option>
@@ -46,7 +46,7 @@ if (nombre == null)
 								<%
 								} else if ("2".equals(findby)) {
 								%>
-									<option value="0">Todos</option>
+									<option value="0">Pel&iacute;cula</option>
 									<option value="1">Actor</option>
 									<option selected value="2">Director</option>
 									<option value="3">Género</option>
@@ -54,7 +54,7 @@ if (nombre == null)
 								<%
 								} else if ("3".equals(findby)) {
 								%>
-									<option value="0">Todos</option>
+									<option value="0">Pel&iacute;cula</option>
 									<option value="1">Actor</option>
 									<option value="2">Director</option>
 									<option selected value="3">Género</option>
@@ -62,7 +62,7 @@ if (nombre == null)
 								<%
 								} else if ("4".equals(findby)) {
 								%>
-									<option value="0">Todos</option>
+									<option value="0">Pel&iacute;cula</option>
 									<option value="1">Actor</option>
 									<option value="2">Director</option>
 									<option value="3">Género</option>

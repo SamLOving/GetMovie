@@ -2,6 +2,12 @@ header {
 	text-align: center;
 }
 
+img {
+	text-align: center;
+    display:block; 
+    margin:auto;
+}
+
 footer {
 	text-align: center
 }
@@ -58,8 +64,8 @@ aside {
 
 .img-responsive1 {
 	display: block;
-	max-width: 310px;
-	height: 250px;
+	max-width: 220px;
+	height: 230px;
 }
 
 .img-responsive2 {
@@ -81,4 +87,11 @@ aside {
 
 .buttonsHome {
 	margin-top: 6px;
+}
+
+img.img-center {
+	max-width: 200px; 
+    height: 235px; 
+    display:block; 
+    margin:auto;
 }

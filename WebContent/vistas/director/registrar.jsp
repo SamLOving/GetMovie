@@ -17,7 +17,9 @@
 						<label for="nombre" class="col-lg-2 control-label">Nombre</label>
 						<div class="col-lg-10">
 							<input type="text" class="form-control" id="Nombre"
-								placeholder="Nombre" name="nombre" required>
+								placeholder="Nombre" name="nombre" required"
+								pattern=".{3,50}"
+								title="&Uacute;nicamente se admiten nombres de hasta 50 caracteres"/>
 						</div>
 					</div>
 					<div class="form-group">

@@ -17,7 +17,9 @@
 						<label for="nombre" class="col-lg-2 control-label">Nombre</label>
 						<div class="col-lg-10">
 							<input type="text" class="form-control" id="Nombre"
-								placeholder="Nombre" name="nombre" required>
+								placeholder="Nombre" name="nombre" required								
+								pattern=".{3,50}"
+								title="&Uacute;nicamente se admiten nombres de hasta 50 caracteres"/>
 						</div>
 					</div>
 					<div class="form-group">
@@ -48,7 +50,9 @@
 						<label for="oscars" class="col-lg-2 control-label">N&uacute;mero de Oscars</label>
 						<div class="col-lg-10">
 							<input type="text" class="form-control" id="oscars" 
-							placeholder="Nro de oscars" name="oscars" required>
+							placeholder="Nro de oscars" name="oscars" required 
+								pattern="^\d{1,2}$"
+								title="&Uacute;nicamente se admiten n&uacute;meros de hasta 2 d&iacute;gitos"/>
 						</div>
 					</div>
 					<div>

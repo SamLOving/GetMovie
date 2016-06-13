@@ -20,7 +20,9 @@
 						<label for="nombre" class="col-lg-2 control-label">Nombre</label>
 						<div class="col-lg-10">
 							<input type="text" class="form-control" id="Nombre" name="nombre"
-								placeholder="Nombre" value="<%=actor.getNombreactor()%>"required/>
+								placeholder="Nombre" value="<%=actor.getNombreactor()%>"required								
+								pattern=".{3,50}"
+								title="&Uacute;nicamente se admiten nombres de hasta 50 caracteres"/>
 						</div>
 					</div>
 					<div class="form-group">
@@ -81,7 +83,9 @@
 						<label for="oscars" class="col-lg-2 control-label">N&uacute;mero de Oscars</label>
 						<div class="col-lg-10">
 							<input type="text" class="form-control" id="oscars" placeholder="Numero de oscars"
-									value="<%=actor.getOscars()%>" required name="oscars">
+									value="<%=actor.getOscars()%>" required name="oscars"
+									pattern="^\d{1,2}$"
+									title="&Uacute;nicamente se admiten n&uacute;meros de hasta 2 d&iacute;gitos"/>
 						</div>
 					</div>
 					<input type="hidden" name="idActor" value="<%=actor.getIdactor() %>" />

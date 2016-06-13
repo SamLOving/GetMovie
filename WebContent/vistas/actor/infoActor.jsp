@@ -9,7 +9,7 @@
 	<ul class="breadcrumb">
 		<li><a href="${pageContext.request.contextPath}/home">Home</a>
 		<li><a href="${pageContext.request.contextPath}/actor/home">Actor</a></li>
-  		<li class="active">Informaci&iacute;on de <%=actor.getNombreactor() %></li>
+  		<li class="active">Informaci&iacute;on</li>
 	</ul>
 	<div class="row">
 		<div class="col-lg-9">
@@ -30,53 +30,49 @@
 							name="fecha" value="<%=actor.getNacimiento() %>" readonly=true/>
 						</div>
 					</div>
-					<%
-						if(actor.getGenero()=="Masculino"){
-					%>
 					<div class="form-group">
       					<label class="col-lg-2 control-label">G&eacute;nero</label>
       					<div class="col-lg-10">
         					<div class="radio">
           						<label>
-            					<input type="radio" name="optionsRadios" id="optionsRadios1" value="Masculino" 
-            					checked readonly>
+								<%
+									if(actor.getGenero()=="Masculino"){
+								%>
+            					<input type="radio" name="optionsRadios" id="optionsRadios1" value="Masculino"
+            						checked>
             						Masculino
+            					<%
+									}else{
+            					%>
+            					<input type="radio" name="optionsRadios" id="optionsRadios1" value="Masculino"
+            						checked disabled="disabled"/>
+            						Masculino
+            					<%
+    								}
+    							%>
           						</label>
         						</div>
         					<div class="radio">
           						<label>
+          						<%
+									if(actor.getGenero()=="Femenino"){
+								%>
             					<input type="radio" name="optionsRadios" id="optionsRadios2" value="Femenino"
-            					readonly=>
+            					 checked="checked" />
             						Femenino
+            					<%
+									}else{
+            					%>
+            					<input type="radio" name="optionsRadios" id="optionsRadios1" value="Femenino"
+            						disabled="disabled"/>
+            						Femenino
+            					<%
+    								}
+    							%>
           						</label>
         					</div>
       					</div>
     				</div>
-    				<%
-						}else{
-    				%>
-    				<div class="form-group">
-      					<label class="col-lg-2 control-label">G&eacute;nero</label>
-      					<div class="col-lg-10">
-        					<div class="radio">
-          						<label>
-            					<input type="radio" name="optionsRadios" id="optionsRadios1" value="Masculino" 
-            					readonly>
-            						Masculino
-          						</label>
-        						</div>
-        					<div class="radio">
-          						<label>
-            					<input type="radio" name="optionsRadios" id="optionsRadios2" value="Femenino"
-            					checked readonly>
-            						Femenino
-          						</label>
-        					</div>
-      					</div>
-    				</div>
-    				<%
-						}
-    				%>
 					<div class="form-group">
 						<label for="oscars" class="col-lg-2 control-label">N&uacute;mero de Oscars</label>
 						<div class="col-lg-10">

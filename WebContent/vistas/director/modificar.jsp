@@ -20,7 +20,9 @@
 						<label for="nombre" class="col-lg-2 control-label">Nombre</label>
 						<div class="col-lg-10">
 							<input type="text" class="form-control" id="nombre" name="nombre"
-								placeholder="Nombre" value="<%=d.getNombredirector()%>" required/>
+								placeholder="Nombre" value="<%=d.getNombredirector()%>" required
+								pattern=".{3,50}"
+								title="&Uacute;nicamente se admiten nombres de hasta 50 caracteres"/>
 						</div>
 					</div>
 					<div class="form-group">
